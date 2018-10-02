@@ -33,7 +33,8 @@ gem 'render_anywhere', '~> 0.0.12'
 gem 'render', '~> 0.1.3'
 gem 'layout', '~> 0.2.1'
 gem 'govuk_template', '~> 0.24.1'
-
+gem 'bootstrap_form', '~> 2.7'
+gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bootstrap-sass', '~> 3.2.0.2'

@@ -1,27 +1,23 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :user_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<form accept-charset="UTF-8" action="/users" class="new_user"
+      id="new_user" method="post">
+    <h1> Sign up</h1>
+  <input name="utf8" type="hidden" value="&#x2713;" />
+  <input name="authenticity_token" type="hidden"
+         value="NNb6+J/j46LcrgYUC60wQ2titMuJQ5lLqyAbnbAUkdo=" />
+  <label for="user_name">Name</label>
+  <input id="user_name" name="user[name]" type="text" />
+ <br>
+  <label for="user_email">Email</label>
+  <input id="user_email" name="user[email]" type="text" />
+    <br>
+  <label for="user_password">Password</label>
+  <input id="user_password" name="user[password]"
+         type="password" />
+    <br>
+  <label for="user_password_confirmation">Confirmation</label>
+  <input id="user_password_confirmation"
+         name="user[password_confirmation]" type="password" />
+    <br>
+  <input class="btn btn-primary" name="commit" type="submit"
+         value="Create my account" />
+</form>
