@@ -5,10 +5,6 @@ Rails.application.routes.draw do
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'signup'  => 'users#new'
-<<<<<<< HEAD
-=======
-  post   'signup'  => 'users#create'
->>>>>>> 39776a48a432e0861e7ec757413937ea9ad1cc42
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
