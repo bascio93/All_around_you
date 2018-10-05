@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :logged_in_users, only: [:edit, :update,]
-
+  before_action :logged_in_users, only: [:edit, :index, :update, :destroy]
+  before_action :userincorretto, only: [:edit, :update]
+  before_action :seiadmin, only: :destroy
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.paginate(:page => params[:page], per_page: 15)
   end
 
   # GET /users/1
@@ -18,7 +19,15 @@ class UsersController < ApplicationController
     @user = User.new
 
   end
-
+  def userincorretto
+    @user=User.find(params[:id])
+    if @user!=currentuser
+       reindirizza(@user)
+    end
+  end
+  def seiadmin
+    redirect_to(root_url) unless current_user.admin?
+  end
   # GET /users/1/edit
   def edit
     @user=User.find(params[:id])
@@ -26,6 +35,7 @@ class UsersController < ApplicationController
 
   def logged_in_users
     if !logged_in?
+        salvalocation
         flash[:danger]="Errore, utente non loggato"
         redirect_to login_url
     end
@@ -45,6 +55,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
+  #modifica utente
   def update
     @user=User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -58,11 +69,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
   end
 
   private
@@ -75,5 +84,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
+    end
+    def edit
+        @user=User.find(params[:id])
     end
 end

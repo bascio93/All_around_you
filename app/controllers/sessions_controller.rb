@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
     log_in(user)
     params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-    redirect_to user
+    reindirizza(user)
     else
         flash.now[:danger]= "Errore, user non esistente o password sbagliata, riprova il login perfavore"
         render 'new'

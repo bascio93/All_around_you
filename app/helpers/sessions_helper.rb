@@ -10,8 +10,20 @@ module SessionsHelper
         return @current_user
     end
   end
+  def logged_in?
+    !currentuser.nil?
+  end
    def islogged
       !current_user.nil?
+   end
+   def reindirizza(default)
+       redirect_to(session[:urlchiesto] || default)
+       session.delete(:urlchiesto)
+   end
+   def salvalocation
+       if request.get?
+       session[:urlchiesto]=request.url
+       end
    end
    #Salva il token e lo user id criptato sul browser
    def remember(user)
