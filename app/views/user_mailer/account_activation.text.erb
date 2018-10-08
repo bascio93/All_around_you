@@ -1,0 +1,5 @@
+Salve <%= @user.name %>,
+
+Benvenuto su All Around you, clicca sul link sottostante per attivare il tuo account:
+
+<%= edit_account_activation_url(@user.id, @user.activation_token, email: @user.email) %>
