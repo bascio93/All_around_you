@@ -5,11 +5,11 @@
     <title><%= yield(:title) %> | All Around You App</title>
   </head>
   <body>
-    <h1>Sample App</h1>
-    <p>
-      This is the home page for the
-      <a href="http://0.0.0.0:3000/signup">Signup page:</a>
-      sample application.
-    </p>
+    <h1>All around you</h1>
+      <p>
+  All around you
+  <p> <%= link_to "Registrati!", signup_path %></p>
+  <p><%= link_to "Loggati!", login_path %></p>
+</p>
   </body>
 </html>
