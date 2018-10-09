@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181006091850) do
+ActiveRecord::Schema.define(version: 20181009132323) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20181006091850) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "activation_token"
+    t.index ["activation_token"], name: "index_users_on_activation_token"
   end
 
 end

@@ -6,5 +6,4 @@
 Benvenuto su All Around you, clicca sul link sottostante per attivare il tuo account:
 </p>
 
-<%= link_to "Activate", edit_account_activation_url(@user.id, @user.activation_token,
-                                                    email: @user.email) %>
+<%= link_to "Activate", edit_account_activation_url(id: @user.id, email: @user.email, activation_token: @user.activation_token) %>

@@ -7,6 +7,7 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Do not eager load code on boot.
+  config.action_mailer.default_url_options = { :host => "http://0.0.0.0:3000/" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -15,8 +16,8 @@ Rails.application.configure do
   :address        => "smtp.gmail.com",
   :port           => 587,
   :domain         => "gmail.com",
-  :user_name      => "thirddef@gmail.com",
-  :password       => "drakengard",
+  :user_name      => "youremail@gmail.com",
+  :password       => "yourpw",
   :authentication => :plain
   }
 config.file_watcher = ActiveSupport::EventedFileUpdateChecker
