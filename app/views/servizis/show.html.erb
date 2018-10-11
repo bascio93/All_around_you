@@ -1,13 +1,13 @@
-<li id="Servizi-<%= @servizio.id %>">
-  <span class="nome"><%= @servizio.nome %></span>
-  <span class="tipo"><%= @servizio.tipo %></span>
-  <span class="content"><%= @servizio.descrizione %>
-   <span class="image"> <%= image_tag @servizio.immagini.url if @servizio.immagini? %> </span>
+<li id="Servizi-<%= @servizi.id %>">
+  <span class="nome"><%= @servizi.nome %></span>
+  <span class="tipo"><%= @servizi.tipo %></span>
+  <span class="content"><%= @servizi.descrizione %>
+   <span class="image"> <%= image_tag @servizi.immagini.url if @servizi.immagini? %> </span>
   </span>
   <span class="timestamp">
-    Creato: <%= time_ago_in_words(@servizio.created_at) %> ago.
-    <% if currentuser==@servizio.user %>
-      <%= link_to "Cancella", servizi, :method => :delete,
+    Creato: <%= time_ago_in_words(@servizi.created_at) %> ago.
+    <% if currentuser==@servizi.user %>
+      <%= link_to "Cancella", @servizi, :method => :delete,
                                        data: { confirm: "Sicuro?" } %>
     <% end %>
   </span>

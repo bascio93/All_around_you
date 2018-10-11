@@ -17,7 +17,9 @@ class ServizisController < ApplicationController
     flash[:success] = "Cancellazione avvenuta con successo"
     render 'show'
   end
-
+  def show
+      @servizi=Servizi.find(params[:id])
+  end
   private
     #Strong parameters (Parametri forti), nel controller possibile soltanto accedere alle chiavi whitelistate descrizione, tipo, indirizzo e nome
     def servizi_params
@@ -26,8 +28,5 @@ class ServizisController < ApplicationController
     def userservizio
       @servizio = currentuser.servizis.find_by(id: params[:id])
       redirect_to root_url if @servizio.nil?
-    end
-    def show
-      @servizio=User.find(id: params[:id])
     end
 end
