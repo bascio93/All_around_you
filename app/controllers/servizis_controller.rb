@@ -28,6 +28,6 @@ class ServizisController < ApplicationController
       redirect_to root_url if @servizio.nil?
     end
     def show
-      @servizio=currentuser.servizis.find_by(id: params[:id])
+      @servizio=User.find(id: params[:id])
     end
 end

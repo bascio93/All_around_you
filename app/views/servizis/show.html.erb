@@ -1,0 +1,14 @@
+<li id="Servizi-<%= @servizio.id %>">
+  <span class="nome"><%= @servizio.nome %></span>
+  <span class="tipo"><%= @servizio.tipo %></span>
+  <span class="content"><%= @servizio.descrizione %>
+   <span class="image"> <%= image_tag @servizio.immagini.url if @servizio.immagini? %> </span>
+  </span>
+  <span class="timestamp">
+    Creato: <%= time_ago_in_words(@servizio.created_at) %> ago.
+    <% if currentuser==@servizio.user %>
+      <%= link_to "Cancella", servizi, :method => :delete,
+                                       data: { confirm: "Sicuro?" } %>
+    <% end %>
+  </span>
+</li>
