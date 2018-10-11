@@ -20,6 +20,15 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+<div class="col-md-8">
+    <% if @user.servizis.any? %>
+      <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
+      <ol class="servizi">
+        <%= render @servizis %>
+      </ol>
+      <%= will_paginate @servizis %>
+    <% end %>
+  </div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

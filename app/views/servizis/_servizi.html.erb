@@ -1,0 +1,16 @@
+<li id="Servizi-<%= servizi.id %>">
+  <%= link_to gravatar_for(servizi.user, size: 50), servizi.user %>
+  <span class="user"><%= link_to servizi.user.name, servizi.user %></span>
+  <span class="nome"><%= servizi.nome %></span>
+  <span class="tipo"><%= servizi.tipo %></span>
+  <span class="content"><%= servizi.descrizione %>
+  <%= image_tag servizi.immagini.url if servizi.immagini? %>
+  </span>
+  <span class="timestamp">
+    Creato: <%= time_ago_in_words(servizi.created_at) %> ago.
+    <% if currentuser==servizi.user %>
+      <%= link_to "Cancella", servizi, method: :delete,
+                                       data: { confirm: "Sicuro?" } %>
+    <% end %>
+  </span>
+</li>

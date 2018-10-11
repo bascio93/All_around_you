@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :servizis, dependent: :destroy #lol
   attr_accessor :remember_token, :reset_token
   before_save { self.email = email.downcase }
   before_create { create_activation_digest }
@@ -19,6 +20,9 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token=User.nuovotoken
     self.activation_digest=User.digest(activation_token)
+  end
+  def feed
+    Servizi.where("user_id = ?", id)
   end
   #Modifica reset password digest
   def create_reset_digest

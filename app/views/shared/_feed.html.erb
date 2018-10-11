@@ -1,0 +1,6 @@
+<% if @serviziutente.any? %>
+  <ol class="servizi">
+    <%= render @serviziutente %>
+  </ol>
+  <%= will_paginate @serviziutente %>
+<% end %>

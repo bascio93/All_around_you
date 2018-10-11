@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @servizi=@user.servizis.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -33,13 +34,6 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
 
-  def logged_in_users
-    if !logged_in?
-        salvalocation
-        flash[:danger]="Errore, utente non loggato"
-        redirect_to login_url
-    end
-  end
   # POST /users
   # POST /users.json
     def create

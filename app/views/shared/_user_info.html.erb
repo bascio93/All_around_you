@@ -1,0 +1,4 @@
+<%= link_to gravatar_for(currentuser, size: 50), currentuser %>
+<h1><%= currentuser.name %></h1>
+<span><%= link_to "view my profile", currentuser %></span>
+<span><%= pluralize(currentuser.servizis.count, "Services") %></span>

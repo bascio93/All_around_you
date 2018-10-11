@@ -1,0 +1,21 @@
+<%= form_for(@servizi, html: { multipart: true }) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :nome, class: 'form-control' %>
+  <br>
+  <br>
+  <%= f.label :indirizzo %>
+  <%= f.text_field :indirizzo, class: 'form-control' %>
+  <br>
+  <br>
+  <%= f.label :tipo %>
+  <%= f.text_field :tipo, class: 'form-control' %>
+  <br>
+  <br>
+  <div class="field">
+    <%= f.text_area :descrizione, placeholder: "Inserisci una descrizione" %>
+  </div>
+  <%= f.submit "Crea", class: "btn btn-primary" %>
+   <span class="picture">
+    <%= f.file_field :immagini, accept: 'image/jpeg,image/gif,image/png' %>
+  </span>
+<% end %>
