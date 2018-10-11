@@ -15,6 +15,7 @@ class ServizisController < ApplicationController
   def destroy
     Servizi.find(params[:id]).destroy
     flash[:success] = "Cancellazione avvenuta con successo"
+    render 'show'
   end
 
   private

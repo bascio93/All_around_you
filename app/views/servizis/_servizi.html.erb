@@ -9,7 +9,7 @@
   <span class="timestamp">
     Creato: <%= time_ago_in_words(servizi.created_at) %> ago.
     <% if currentuser==servizi.user %>
-      <%= link_to "Cancella", , method: :delete,
+      <%= link_to "Cancella", servizi, :method => :delete,
                                        data: { confirm: "Sicuro?" } %>
     <% end %>
   </span>
