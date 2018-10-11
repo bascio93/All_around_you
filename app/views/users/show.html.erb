@@ -24,9 +24,9 @@
     <% if @user.servizis.any? %>
       <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
       <ol class="servizi">
-        <%= render @servizis %>
+        <%= render @user.servizis %>
       </ol>
-      <%= will_paginate @servizis %>
+      <%= will_paginate @user.servizis %>
     <% end %>
   </div>
 
