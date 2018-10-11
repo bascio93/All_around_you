@@ -13,8 +13,8 @@ class ServizisController < ApplicationController
   end
 
   def destroy
-  @servizio.destroy
-  flash[:success] = "Cancellazione avvenuta con successo"
+    Servizi.find(params[:id]).destroy
+    flash[:success] = "Cancellazione avvenuta con successo"
   end
 
   private
@@ -23,7 +23,10 @@ class ServizisController < ApplicationController
       params.require(:servizi).permit(:descrizione, :tipo, :indirizzo, :nome, :immagini)
     end
     def userservizio
-      @servizio = current_user.servizis.find_by(id: params[:id])
+      @servizio = currentuser.servizis.find_by(id: params[:id])
       redirect_to root_url if @servizio.nil?
+    end
+    def show
+      @servizio=currentuser.servizis.find_by(id: params[:id])
     end
 end

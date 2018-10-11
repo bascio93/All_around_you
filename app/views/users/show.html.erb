@@ -26,9 +26,10 @@
       <ol class="servizi">
         <%= render @user.servizis %>
       </ol>
-      <%= will_paginate @user.servizis %>
+      <%= will_paginate @servizi %>
     <% end %>
   </div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+

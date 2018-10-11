@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
   end
   def seiadmin
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless currentuser.admin?
   end
   # GET /users/1/edit
   def edit
@@ -75,7 +75,7 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      redirect_to(root_url) unless currentuser?(@user)
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
