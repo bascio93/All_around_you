@@ -17,15 +17,77 @@
     </div>
   </div>
   <% else %>
+
+
+
     <head>
         <title><%= yield(:title) %> | All Around You App</title>
+
+        <link rel="stylesheet" href="css/home.css" />
+
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+          #par1{
+            font-family: 'Merriweather', serif;
+            font-size: 25px;
+            color: white;
+
+          }
+
+          h2{
+            font-family: 'Merriweather', serif;
+            color: white;
+          }
+
+          #par2{
+            font-family: 'Merriweather', serif;
+            font-size: 20px;
+            color: grey;
+          }
+
+          #par3{
+
+            background-color:white;
+            width:360px;
+            height:80px;
+            margin:0 auto;
+            margin-top:50px;
+            font-family:arial;color:white;
+            text-align:center;
+            border: white 1px solid;
+
+          }
+
+        </style>
+
+
     </head>
-    <body>
-        <h1>All around you</h1>
+    <body bgcolor="black">
+        <center>
+
+          <div id="par1">
+            <h1>All Around You</h1>
+          </div>
+
+        </center>
         <p>
-    All around you
-    <p> <%= link_to "Registrati!", signup_path %></p>
-    <p><%= link_to "Loggati!", login_path %></p>
+
+    <div id="par2">
+      <center>
+        Con All Around You puoi trovare facilmente i servizi più vicini a te!
+      </center>
+    </div>
+
+    <div id = "par3">
+      <p> <h2><%= link_to "Registrati!", signup_path %></p></h2>
+    </div>
+
+    <div id = "par3">
+    <p><h2><%= link_to "Loggati!", login_path %></h2></p>
+    </div>
+
+
     </p>
     </body>
    <% end %>
