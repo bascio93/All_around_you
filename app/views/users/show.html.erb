@@ -29,7 +29,15 @@
       <%= will_paginate @servizi %>
     <% end %>
   </div>
-
+<div class="col-md-8">
+    <% if @user.recensionis.any? %>
+      <h3>Numero Recensioni: (<%= @user.recensionis.count %>)</h3>
+      <ol class="recensioni">
+        <%= render @user.recensionis %>
+      </ol>
+      <%= will_paginate @recensionis %>
+    <% end %>
+  </div>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 

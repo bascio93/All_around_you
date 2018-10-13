@@ -11,4 +11,31 @@
                                        data: { confirm: "Sicuro?" } %>
     <% end %>
   </span>
+  <div class="row-md-8">
+    <% if @servizi.recensionis.any? %>
+      <h3>Numero Recensioni: (<%= @servizi.recensionis.count %>)</h3>
+      <ol class="recensioni">
+         <%= render @servizi.recensionis %>
+      </ol>
+      <%= will_paginate @recensionis %>
+    <% end %>
+  </div>
+  <section class="recensioni_form">
+  <%= form_for(@recensioni) do |f| %>
+  <%= f.label :titolo %>
+  <%= f.text_field :titolo, class: 'form-control' %>
+  <br>
+  <br>
+  <%= f.label :Voto %>
+  <%= f.text_field :votoservizio, class: 'form-control' %>
+  <br>
+  <br>
+  <%=f.hidden_field 'servizi_id', :value => @servizi.id %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Scrivi recensione" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
+
+      </section>
 </li>

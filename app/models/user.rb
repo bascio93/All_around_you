@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :servizis, dependent: :destroy #lol
+  has_many :recensionis, dependent: :destroy
   attr_accessor :remember_token, :reset_token
   before_save { self.email = email.downcase }
   before_create { create_activation_digest }

@@ -1,0 +1,14 @@
+<li id="Recensioni-<%= recensioni.id %>">
+  <span class="nome"><%= recensioni.titolo %></span>
+  <span class="nome"><%= link_to recensioni.servizi.nome, recensioni.servizi%></span>
+  <span class="nome"><%= link_to recensioni.user.name, recensioni.user%></span>
+
+  <span class="content"><%= recensioni.content %></span>
+  <span class="voto"><%= recensioni.votoservizio %></span>
+  <span class="timestamp">
+    <% if currentuser==recensioni.user %>
+      <%= link_to "Cancella", recensioni, :method => :delete,
+                                       data: { confirm: "Sicuro?" } %>
+    <% end %>
+  </span>
+</li>

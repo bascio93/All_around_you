@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181010200905) do
+ActiveRecord::Schema.define(version: 20181012042646) do
+
+  create_table "recensionis", force: :cascade do |t|
+    t.string "titolo"
+    t.text "content"
+    t.integer "votoservizio"
+    t.integer "user_id"
+    t.integer "servizi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["servizi_id"], name: "index_recensionis_on_servizi_id"
+    t.index ["user_id"], name: "index_recensionis_on_user_id"
+  end
 
   create_table "servizi", force: :cascade do |t|
     t.text "descrizione"

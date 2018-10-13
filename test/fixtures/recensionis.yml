@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titolo: MyString
+  content: MyText
+  votoservizio: 1
+  user: one
+  servizi: one
+
+two:
+  titolo: MyString
+  content: MyText
+  votoservizio: 1
+  user: two
+  servizi: two

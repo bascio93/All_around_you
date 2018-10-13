@@ -1,5 +1,5 @@
 <li id="Servizi-<%= servizi.id %>">
-  <span class="nome"><%= link_to servizi.nome, servizi%></span>
+  <span class="nome"><%= link_to servizi.nome, servizi_path(servizi.id)%></span>
   <span class="tipo"><%= servizi.tipo %></span>
   <span class="content"><%= servizi.descrizione %>
   </span>
