@@ -1,4 +1,46 @@
 
+<head>
+  <style media="screen">
+  @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+    h1{
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      color: white;
+    }
+
+    #nome{
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      margin: auto;
+      color: white;
+    }
+    #contenitore{
+      background-color:black;
+      width:360px;
+      height:200px;
+      margin:10 auto;
+      margin-top:50px;
+      text-align:center;
+      border: white 1px solid;
+    }
+    #par2{
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      margin: auto;
+      color: white;
+    }
+    #par1{
+      text-align: center;
+      font-family: 'Merriweather', serif;
+      margin: auto;
+      color: white;
+    }
+  </style>
+</head>
+
+
+<body bgcolor="black">
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
 
@@ -6,6 +48,9 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
 
+    <div id= "contenitore">
+      <br />
+      <div id = "nome">
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
       <br>
@@ -21,10 +66,26 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
       <br>
+      </div>
+    </div>
+
+
+
       <br>
-      <%= f.submit "Registrati", class: "btn btn-primary" %>
+      <div id="par1">
+        <center>
+          <%= f.submit "Registrati", class: "btn btn-primary"  %>
+        </center>
+      </div>
+
     <% end %>
-    <p>Gia registrato? <%= link_to "Loggati!", login_path %></p>
+    <br />
+    <div id="par2">
+      <center>
+        <p>Gia registrato? <%= link_to "Loggati!", login_path %></p>
+      </center>
+    </div>
+
   </div>
 </div>
-
+</body>
