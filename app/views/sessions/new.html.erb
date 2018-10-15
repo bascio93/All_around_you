@@ -1,20 +1,40 @@
 
 
 <head>
-  <h1>Sessions#new</h1>
-  <p>Find me in app/views/sessions/new.html.erb</p>
-  <% provide(:title, "Log in") %>
-  <h1>Log in</h1>
 
   <style>
 
+    @import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+    h1{
+      font-family: 'Merriweather', serif;
+      color: white;
+    }
+    #div1{
+      font-family: 'Merriweather', serif;
+      color: white;
+      text-align: center;
+    }
+    a:link{
+      color: grey;
+    }
 
 
   </style>
 
+  <br />
+
+  <% provide(:title, "Log in") %>
+  <center>
+    <h1>Log in</h1>
+  </center>
+
+  <br />
+
+
 </head>
-<body>
-  <div class="row">
+<body bgcolor=black>
+  <div class="row", id="div1">
     <div class="col-md-6 col-md-offset-3">
       <%= form_for(:session, url: login_path) do |f| %>
 
@@ -32,7 +52,8 @@
 
         <%= f.submit "Log in", class: "btn btn-primary" %>
       <% end %>
-
+      <br />
+      <br />
       <p>Nuovo utente? <%= link_to "Registrati!", signup_path %></p>
     </div>
   </div>
