@@ -18,8 +18,8 @@ Rails.application.configure do
   :address        => "smtp.gmail.com",
   :port           => 587,
   :domain         => "gmail.com",
-  :user_name      => "thirddef@gmail.com",
-  :password       => "Frascati18*",
+  :user_name      => "allr0undy0u@gmail.com",
+  :password       => "allaroundyou.9",
   :authentication => :plain
   }
 

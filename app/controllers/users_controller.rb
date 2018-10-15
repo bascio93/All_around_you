@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     else
       msg=@user.errors.full_messages
       flash[:danger]=msg
-      redirect_to login_url
+      redirect_to signup_path
     end
   end
 
