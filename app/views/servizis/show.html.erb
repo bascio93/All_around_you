@@ -11,7 +11,7 @@
                                        data: { confirm: "Sicuro?" } %>
     <% end %>
   </span>
-  <div class="row-md-8">
+  <div class="row-md-8" align="left">
     <% if @servizi.recensionis.any? %>
       <h3>Numero Recensioni: (<%= @servizi.recensionis.count %>)</h3>
       <ol class="recensioni">
@@ -35,7 +35,25 @@
     <%= f.text_area :content, placeholder: "Scrivi recensione" %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
-<% end %>
+  <% end %>
 
       </section>
+  <div class="row-md-8" align="right">
+    <% if @servizi.domandes.any? %>
+      <h3>Numero Domande: (<%= @servizi.domandes.count %>)</h3>
+      <ol class="domande">
+         <%= render @servizi.domandes %>
+      </ol>
+      <%= will_paginate @domandes %>
+    <% end %>
+  </div>
+  <section class="domande_form">
+  <%= form_for(@domande) do |f| %>
+  <%=f.hidden_field 'servizio_id', :value => @servizi.id %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Scrivi domanda" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  <% end %>
+  </section>
 </li>

@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @servizi=@user.servizis.paginate(page: params[:page])
-    @recensioni=@user.recensionis.paginate(page: params[:page])
   end
 
   # GET /users/new

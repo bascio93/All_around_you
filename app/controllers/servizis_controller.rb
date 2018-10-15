@@ -19,8 +19,9 @@ class ServizisController < ApplicationController
   def show
       @servizi=Servizi.find(params[:id])
       @recensioni=Recensioni.new
-      redirect_to root_url if @servizi.nil?
       @recensionis=@servizi.recensionis.paginate(page: params[:page])
+      @domande=Domande.new
+      @domandes=@servizi.domandes.paginate(page: params[:page])
   end
   private
     #Strong parameters (Parametri forti), nel controller possibile soltanto accedere alle chiavi whitelistate descrizione, tipo, indirizzo e nome

@@ -16,7 +16,7 @@ class RecensionisController < ApplicationController
      end
     def destroy
         recensioni.destroy
-        flash[:success] = "Micropost deleted"
+        flash[:success] = "Recensione eliminata"
         redirect_to request.referrer || root_url
     end
     private
