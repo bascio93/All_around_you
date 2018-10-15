@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  get    'servizis/:id/Aggpref'  => 'favorites#create', as: 'aggiungi'
+  get    '/preferiti'          => 'users#listapreferiti', as: 'preferiti'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

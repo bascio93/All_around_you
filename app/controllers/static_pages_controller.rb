@@ -1,8 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
-    user=currentuser
-    if !user.nil?
+    @user=currentuser
+    if !@user.nil?
       @servizi = currentuser.servizis.build if logged_in?
       @serviziutente = currentuser.feed.paginate(page: params[:page])
     end

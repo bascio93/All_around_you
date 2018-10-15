@@ -1,5 +1,6 @@
 class Servizi < ApplicationRecord
   belongs_to :user
+  has_many :favorites, dependent: :destroy
   has_many :recensionis, dependent: :destroy
   has_many :domandes, dependent: :destroy
   default_scope -> { order(created_at: :desc)

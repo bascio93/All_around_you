@@ -1,0 +1,7 @@
+<% provide(:title, 'Lista preferiti') %>
+<h1> Lista preferiti: </h1>
+<ul class="preferiti">
+  <% @favorite.each do |s| %>
+      <%= render s %>
+  <% end %>
+</ul>

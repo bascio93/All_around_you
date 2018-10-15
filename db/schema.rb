@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181014205254) do
+ActiveRecord::Schema.define(version: 20181015203240) do
 
   create_table "domandes", force: :cascade do |t|
     t.text "content"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20181014205254) do
     t.integer "servizi_id"
     t.index ["servizi_id"], name: "index_domandes_on_servizi_id"
     t.index ["user_id"], name: "index_domandes_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "servizi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["servizi_id"], name: "index_favorites_on_servizi_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "recensionis", force: :cascade do |t|
@@ -73,6 +82,7 @@ ActiveRecord::Schema.define(version: 20181014205254) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "activation_token"
+    t.integer "preferiti"
     t.index ["activation_token"], name: "index_users_on_activation_token"
   end
 

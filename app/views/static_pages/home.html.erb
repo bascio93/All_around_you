@@ -15,7 +15,9 @@
       <h3>Servizi erogati:</h3>
       <%= render 'shared/feed' %>
     </div>
-  </div>
+    <div class="col-md-8">
+      <%= link_to "Mostra preferiti", preferiti_path %>
+    </div>
   <% else %>
 
 
@@ -23,7 +25,7 @@
     <head>
         <title><%= yield(:title) %> | All Around You App</title>
 
-      
+
 
         <style>
           @import url('https://fonts.googleapis.com/css?family=Merriweather');

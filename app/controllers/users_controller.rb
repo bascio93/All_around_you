@@ -14,11 +14,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @servizi=@user.servizis.paginate(page: params[:page])
   end
-
+  def listapreferiti
+    cuser=currentuser
+    @favorite=cuser.preferiti
+  end
   # GET /users/new
   def new
     @user = User.new
-
   end
   def userincorretto
     @user=User.find(params[:id])
@@ -48,8 +50,6 @@ class UsersController < ApplicationController
       redirect_to signup_path
     end
   end
-
-
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   #modifica utente

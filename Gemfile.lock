@@ -76,6 +76,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    composite_primary_keys (10.0.5)
+      activerecord (~> 5.1.0, >= 5.1.6)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     dry-inflector (0.1.2)
@@ -256,6 +258,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
+  composite_primary_keys
   fog (~> 1.23.0)
   fog-xenserver (~> 0.3.0)
   govuk_template (~> 0.24.1)

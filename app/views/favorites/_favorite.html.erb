@@ -1,0 +1,8 @@
+  <span class="nome"><%= link_to favorite.servizi.nome, servizi_path(favorite.servizi.id)%></span>
+  <span class="tipo"><%= favorite.servizi.tipo %></span>
+  <span class="content"><%= favorite.servizi.descrizione %>
+  </span>
+  <span class="timestamp">
+    Creato: <%= time_ago_in_words(favorite.servizi.created_at) %> ago.
+  </span>
+</li>
