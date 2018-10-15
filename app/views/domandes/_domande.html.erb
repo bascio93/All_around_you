@@ -1,0 +1,12 @@
+<li id="Domande-<%= domande.id %>">
+  <span class="nome"><%= link_to domande.user.name, domande.user%></span>
+  <span class="nome"><%= link_to domande.servizi.nome, domande.servizi%></span>
+  <span class="content"><%= domande.content %></span>
+  <span class="modifica"><%= link_to 'Modifica', edit_domande_path %></span>
+  <span class="timestamp">
+  <% if currentuser==domande.user %>
+      <%= link_to "Cancella", domande, :method => :delete,
+                                       data: { confirm: "Sicuro?" } %>
+    <% end %>
+  </span>
+</li>

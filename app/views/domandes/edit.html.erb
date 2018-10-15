@@ -1,0 +1,7 @@
+<h1>Modifica domanda</h1>
+<%= form_for(@domanda) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Scrivi domanda" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
