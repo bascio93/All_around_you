@@ -17,7 +17,7 @@ Rails.application.configure do
   :port           => 587,
   :domain         => "gmail.com",
   :user_name      => "thirddef@gmail.com",
-  :password       => "xxx",
+  :password       => "Frascati18*",
   :authentication => :plain
   }
 config.file_watcher = ActiveSupport::EventedFileUpdateChecker
