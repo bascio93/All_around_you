@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
    <% if logged_in? %>
-  <div class="row">
+  <div class="row" align="left">
     <aside class="col-md-4">
       <section class="user_info">
         <%= render 'shared/user_info' %>
@@ -18,6 +18,19 @@
     <div class="col-md-8">
       <%= link_to "Mostra preferiti", preferiti_path %>
     </div>
+    <section class="ricerca">
+       <%= form_for (@ricerche) do |f| %>
+    <%= f.label :tipo %>
+    <%= f.text_field :testotipo, class: 'form-control' %>
+    <br>
+    <br>
+    <%= f.label :nome %>
+    <%= f.text_field :testonome, class: 'form-control' %>
+    <br>
+    <br>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  <% end %>
+   </section>
   <% else %>
 
 

@@ -1,0 +1,8 @@
+<%= form_for (@ricerca,html: { multipart: true }) do |f| %>
+    <%= f.text_area :testotipo, placeholder: "Cerca il servizio in base al tipo" %>
+    <br>
+    <br>
+    <%= f.text_area :testonome, placeholder: "Cerca il servizio in base al nome" %>
+    <br><br>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

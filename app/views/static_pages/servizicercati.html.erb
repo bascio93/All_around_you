@@ -1,0 +1,8 @@
+<h1> Servizi cercati: </h1>
+<div class="row-md-8" align="left">
+    <% if @servizi.any? %>
+      <ol class="servizi">
+         <%= render @servizi %>
+      </ol>
+    <% end %>
+</div>
