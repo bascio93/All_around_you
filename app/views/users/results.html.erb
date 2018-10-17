@@ -1,0 +1,19 @@
+<h1>Risultati della ricerca:</h1>
+
+<% if @properties.empty? %>
+
+  <h3>Nessun risultato.</h3>
+
+<% else %>
+
+  <%= form_tag('/welcome/results', method: :get) do %>
+
+    <%= select_tag "ordine", options_for_select([['Titolo', 'title'], ['Prezzo', 'price'], ['Più recenti', 'created_at DESC']]), include_blank: true %>
+    <%= hidden_field_tag(:city, @city) %>
+    <%= submit_tag("Ordina") %>
+
+  <% end %>
+
+  <p/><%= render 'properties/list' %>
+
+<% end %>

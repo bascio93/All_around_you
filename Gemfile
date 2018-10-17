@@ -12,6 +12,10 @@ gem 'rails', '~> 5.1.6'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+
+# gem for Google Maps API
+gem 'geocoder'
+
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick',             '~> 3.8.0'
 gem 'fog',                     '~> 1.23.0'

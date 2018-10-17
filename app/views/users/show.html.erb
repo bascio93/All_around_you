@@ -28,7 +28,14 @@
       </ol>
       <%= will_paginate @servizi %>
     <% end %>
-  </div>s
+  </div>
+
+<%= form_tag("users/results", method: :get) do %>
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"> <%= label_tag(:city, "Inserisci la località:") %> </span>
+    <%= text_field_tag(:city, nil, required: true, :class => "form-control", :placeholder => "Via o città") %>
+  </div>
+<% end -%>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 

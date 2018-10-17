@@ -14,6 +14,7 @@ class User < ApplicationRecord
    has_secure_password
 
    validates :password, length: { minimum: 6 }, allow_blank: true
+   validates :city, presence: true
  def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -59,4 +60,8 @@ class User < ApplicationRecord
   def paswscaduta?
     reset_sent_at < 2.hours.ago
   end
+
+  geocoded_by :city
+  after_validation :geocode
+
 end

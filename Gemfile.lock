@@ -114,6 +114,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
+    geocoder (1.4.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     govuk_template (0.24.1)
@@ -261,6 +262,7 @@ DEPENDENCIES
   composite_primary_keys
   fog (~> 1.23.0)
   fog-xenserver (~> 0.3.0)
+  geocoder
   govuk_template (~> 0.24.1)
   jbuilder (~> 2.5)
   layout (~> 0.2.1)
