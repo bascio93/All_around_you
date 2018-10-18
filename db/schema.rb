@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20181017201821) do
     t.string "testotipo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "testoindirizzo"
   end
 
   create_table "servizi", force: :cascade do |t|

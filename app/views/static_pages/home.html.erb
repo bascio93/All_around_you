@@ -28,11 +28,54 @@
     <%= f.text_field :testonome, class: 'form-control' %>
     <br>
     <br>
+    <%= f.label :indirizzo %>
+  <%= f.text_field :testoindirizzo, id: :address_indirizzo, class: 'form-control',:size=> 30, :placeholder=> "Inserisci la città" %>
   <%= f.submit "Post", class: "btn btn-primary" %>
+
+
+</p>
+<p>
+
+
+
+</p>
+
   <% end %>
    </section>
   <% else %>
 
+<script>
+
+
+  function initAutocomplete() {
+
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('address_indirizzo');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+      searchBox.setBounds(map.getBounds());
+    });
+
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+
+    });
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIh8MGEehUptz2u7vr8JbRvyvB6mA4M8&libraries=places&callback=initAutocomplete"
+     async defer></script>
 
 
     <head>
