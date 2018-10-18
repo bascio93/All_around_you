@@ -13,6 +13,7 @@
 /config/secrets.yml
 /config/initializers/devise.rb
 /config/initializers/omniauth.rb
+/config/initializers/omniauth.rb~
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
