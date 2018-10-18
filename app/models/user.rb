@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  devise :omniauthable, omniauth_providers: [:google_oauth2]
   has_many :servizis, dependent: :destroy #lol
   has_many :recensionis, dependent: :destroy
   has_many :domandes, dependent: :destroy
@@ -18,6 +19,20 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+  def self.from_omniauth(auth)
+    data = auth["info"]
+    user = User.where(email: data['email']).first
+    if user
+       user
+    else
+     userr=User.new
+     userr.name=data['name']
+     userr.email=data['email']
+     userr.password = Devise.friendly_token[0,20]
+     userr.save
+     userr
+     end
   end
   #Activation remember digest saved on db
   def create_activation_digest

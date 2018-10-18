@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :recensionis,       only: [:create, :destroy]
   resources :domandes,          only: [:create, :destroy, :edit, :update]
   resources :ricerches,          only: [:create, :destroy]
+  resource :session, only: [:create, :destroy]
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
