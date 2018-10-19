@@ -11,6 +11,7 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /config/secrets.yml
+/config/secrets.yml~
 /config/initializers/devise.rb
 /config/initializers/omniauth.rb
 /config/initializers/omniauth.rb~
