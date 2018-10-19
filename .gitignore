@@ -12,7 +12,7 @@
 /db/*.sqlite3-journal
 /config/secrets.yml
 /config/secrets.yml~
-secrets.yml
+/home/biar/Desktop/All_Around_You_2/All_around_you/config/secrets.yml
 /config/initializers/devise.rb
 /config/initializers/omniauth.rb
 /config/initializers/omniauth.rb~
