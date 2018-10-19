@@ -1,0 +1,13 @@
+<%= form_for (@ricerche) do |f| %>
+    <%= f.label :tipo %>
+    <%= f.text_field :testotipo, class: 'form-control' %>
+    <br>
+    <br>
+    <%= f.label :nome %>
+    <%= f.text_field :testonome, class: 'form-control' %>
+    <br>
+    <br>
+    <%= f.label :indirizzo %>
+    <%= f.text_field :testoindirizzo, id: 'indirizzi2', class: 'indirizzi',:size=> 30, :placeholder=> "Inserisci la città" %>
+    <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>

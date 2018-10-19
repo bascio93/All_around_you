@@ -18,64 +18,64 @@
     <div class="col-md-8">
       <%= link_to "Mostra preferiti", preferiti_path %>
     </div>
-    <section class="ricerca">
-       <%= form_for (@ricerche) do |f| %>
-    <%= f.label :tipo %>
-    <%= f.text_field :testotipo, class: 'form-control' %>
-    <br>
-    <br>
-    <%= f.label :nome %>
-    <%= f.text_field :testonome, class: 'form-control' %>
-    <br>
-    <br>
-    <%= f.label :indirizzo %>
-  <%= f.text_field :testoindirizzo, id: :address_indirizzo, class: 'form-control',:size=> 30, :placeholder=> "Inserisci la città" %>
-  <%= f.submit "Post", class: "btn btn-primary" %>
-
-
-</p>
-<p>
-
-
-
-</p>
-
-  <% end %>
+    <section class="ricerca_form">
+       <%= render 'shared/ricerche_form' %>
    </section>
-  <% else %>
-
-<script>
-
-
+   <section class="Cercavicino">
+        <button id="cercavicino"> Cerca vicino te </button>
+    </section>
+    <br>
+    <br>
+    <br>
+    <div id="servizivicini">
+    Servizi vicini:
+    </div>
+   <script>
   function initAutocomplete() {
-
-
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('address_indirizzo');
-    var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-    // Bias the SearchBox results towards current map's viewport.
-    map.addListener('bounds_changed', function() {
-      searchBox.setBounds(map.getBounds());
+    var indirizzi = document.getElementsByClassName('indirizzi');
+    var indirizzo1=indirizzi[0];
+    var indirizzo2=indirizzi[1];
+    var cerca1 = new google.maps.places.Autocomplete(indirizzo1, {
+      types: ['geocode']
+});
+   var cerca2= new google.maps.places.Autocomplete(indirizzo2, {
+      types: ['geocode']
+});
+    cerca1.addListener('place_changed', function() {
+      var places1 = cerca1.getPlace();
     });
-
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-    searchBox.addListener('places_changed', function() {
-      var places = searchBox.getPlaces();
-
-      if (places.length == 0) {
-        return;
-      }
-
-
+    cerca2.addListener('place_changed', function() {
+      var places2 = cerca2.getPlace();
     });
   }
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIh8MGEehUptz2u7vr8JbRvyvB6mA4M8&libraries=places&callback=initAutocomplete"
+  </script>
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIh8MGEehUptz2u7vr8JbRvyvB6mA4M8&libraries=places&callback=initAutocomplete"
      async defer></script>
+  <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+     $("#cercavicino").click(function(){
+      if (navigator.geolocation){
+        var position=navigator.geolocation.getCurrentPosition(function(position){
+        var lat = position.coords.latitude;
+        var long= position.coords.longitude;
+        $.ajax({
+          url: '/cercaservizi',
+          type: 'POST',
+          data:{
+          latitude: lat,
+          longitude: long
+          },
+          success: function(response) {
+          $("#servizivicini").html(response)
+         }
+      });
+    });
+    }
+    });
+  });
+</script>
+  <% else %>
 
 
     <head>

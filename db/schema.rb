@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181017201821) do
+ActiveRecord::Schema.define(version: 20181018184201) do
 
   create_table "domandes", force: :cascade do |t|
     t.text "content"
@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 20181017201821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "immagini"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id", "created_at"], name: "index_servizis_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_servizis_on_user_id"
   end
