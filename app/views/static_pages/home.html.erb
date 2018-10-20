@@ -138,14 +138,14 @@
     </div>
 
     <div id = "par3">
-      <p> <h2><%= link_to "Registrati!", signup_path %></p></h2>
+      <p> <h2><%= link_to "Registrati!", signup_path, id: 'registrati' %></p></h2>
     </div>
 
     <div id = "par3">
-    <p><h2><%= link_to "Loggati!", login_path %></h2></p>
+    <p><h2><%= link_to "Loggati!", login_path, id: 'loggati' %></h2></p>
     </div>
     <div id ="par3">
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %>
     </div>
     </p>
     </body>

@@ -9,7 +9,7 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.action_mailer.default_url_options = { :host => "http://0.0.0.0:3000/" }
+  config.action_mailer.default_url_options = { :host => "http://allaroundyou.com", :port => 3000 }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp

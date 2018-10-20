@@ -48,6 +48,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'render_anywhere', '~> 0.0.12'
 gem 'render', '~> 0.1.3'
+gem 'faker'
 gem 'layout', '~> 0.2.1'
 gem 'govuk_template', '~> 0.24.1'
 gem 'bootstrap_form', '~> 2.7'
@@ -81,10 +82,13 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
-  #gem 'faker', '~> 1.9', '>= 1.9.1'
   #gem 'capybara', '~> 3.9'
   #gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
   gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'phantomjs'
+  gem 'poltergeist'
+  gem  'webdrivers'
+  gem 'selenium-webdriver'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

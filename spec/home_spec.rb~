@@ -1,0 +1,15 @@
+require 'spec_helper'
+class Home
+  def visit_homepage
+    visit('http://allaroundyou.com:3000/')
+  end
+end
+
+describe "Visit Homepage", :type => :capybara_feature do
+  scenario "as no logged user", :type => :capybara_scenario, :js => true do
+    home.visit_homepage
+    expect(page).to have_content("Loggati!")
+    expect(page).to have_content("Registrati!")
+    expect(page).to have_content("Sign in with Google")
+  end
+end
