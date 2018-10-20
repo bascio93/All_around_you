@@ -57,6 +57,16 @@
 	    color: grey;
 	    background-color: transparent;
 	  }
+	  
+	  #cercavicino{
+	    background: white;
+	    border: none;       /* nessun bordo */
+	    color: red;        /* colore del testo    */
+	    font-weight: bold;  /* testo in grassetto  */
+	    padding: 0;         /* padding             */
+	    height: 25px;       /* altezza             */
+	    width: 150px;        /* larghezza           */
+	  }
 
     </style>
 
@@ -74,6 +84,8 @@
 	  <br>
 
 	  <div id='div02' align="left">
+	    <b><center>Aggiungi un nuovo servizio</center></b>
+	    <br>
 	    <section class="servizi_form">
 	      <%= render 'shared/servizi_form' %>
 	    </section>
@@ -105,7 +117,7 @@
       <br>
 
       <section class="Cercavicino">
-	    <button id="cercavicino"> Cerca vicino te </button>
+	    <button id="cercavicino"> Cerca vicino a te </button>
 	</section>
 	<br>
 	
