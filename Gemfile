@@ -28,6 +28,7 @@ gem 'composite_primary_keys'
 gem 'fog-xenserver', '~> 0.3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'cucumber', '~> 3.1', '>= 3.1.2'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
