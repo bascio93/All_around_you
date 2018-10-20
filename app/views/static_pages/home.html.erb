@@ -2,79 +2,162 @@
 <!DOCTYPE html>
 <html>
    <% if logged_in? %>
-  <div class="row" align="left">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="servizi_form">
-        <%= render 'shared/servizi_form' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
-      <h3>Servizi erogati:</h3>
-      <%= render 'shared/feed' %>
-    </div>
-    <div class="col-md-8">
-      <%= link_to "Mostra preferiti", preferiti_path %>
-    </div>
-    <section class="ricerca_form">
-       <%= render 'shared/ricerche_form' %>
-   </section>
-   <section class="Cercavicino">
-        <button id="cercavicino"> Cerca vicino te </button>
-    </section>
-    <br>
-    <br>
-    <br>
-    <div id="servizivicini">
-    Servizi vicini:
-    </div>
-   <script>
-  function initAutocomplete() {
-    var indirizzi = document.getElementsByClassName('indirizzi');
-    var indirizzo1=indirizzi[0];
-    var indirizzo2=indirizzi[1];
-    var cerca1 = new google.maps.places.Autocomplete(indirizzo1, {
-      types: ['geocode']
-});
-   var cerca2= new google.maps.places.Autocomplete(indirizzo2, {
-      types: ['geocode']
-});
-    cerca1.addListener('place_changed', function() {
-      var places1 = cerca1.getPlace();
+
+   <head>
+    <style>
+
+          @import url('https://fonts.googleapis.com/css?family=Merriweather');
+          h1{
+	    color:#B22222;
+          }
+
+          #div01{
+	    font-family: 'Merriweather', serif;
+          }
+
+          #div02{
+	    font-family: 'Merriweather', serif;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid white;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+          }
+
+          #div03{
+	    font-family: 'Merriweather', serif;
+	    width: 900px;
+	    margin: left;
+	    border: 2px solid white;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+          }
+
+          #div04{
+	    font-family: 'Merriweather', serif;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid white;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+          }
+          
+          #bd{
+	    color: white;
+          }
+          
+          a:link, a:visited {
+	    text-decoration: underline;
+	    color: grey;
+	    background-color: transparent;
+	  }
+
+    </style>
+
+   </head>
+
+   <body id='bd' bgcolor=black>
+      <div id='div01' class="row" align="left">
+	<aside class="col-md-4">
+
+
+	  <section class="user_info">
+	    <%= render 'shared/user_info' %>
+	  </section>
+
+	  <br>
+
+	  <div id='div02' align="left">
+	    <section class="servizi_form">
+	      <%= render 'shared/servizi_form' %>
+	    </section>
+	  </div>
+
+	</aside>
+
+	<br>
+
+	<div id='div03' class="col-md-8">
+	  <h3>Servizi erogati:</h3>
+	  <%= render 'shared/feed' %>
+	</div>
+
+	<br>
+
+	<div class="col-md-8">
+	  <%= link_to "Mostra preferiti", preferiti_path %>
+	</div>
+
+	<br>
+
+	<div id='div04'>
+	  <section class="ricerca_form">
+	    <%= render 'shared/ricerche_form' %>
+	  </section>
+	</div>
+
+      <br>
+
+      <section class="Cercavicino">
+	    <button id="cercavicino"> Cerca vicino te </button>
+	</section>
+	<br>
+	
+	<div id="servizivicini">
+	Servizi vicini:
+	</div>
+      <script>
+      function initAutocomplete() {
+	var indirizzi = document.getElementsByClassName('indirizzi');
+	var indirizzo1=indirizzi[0];
+	var indirizzo2=indirizzi[1];
+	var cerca1 = new google.maps.places.Autocomplete(indirizzo1, {
+	  types: ['geocode']
     });
-    cerca2.addListener('place_changed', function() {
-      var places2 = cerca2.getPlace();
+      var cerca2= new google.maps.places.Autocomplete(indirizzo2, {
+	  types: ['geocode']
     });
-  }
-  </script>
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIh8MGEehUptz2u7vr8JbRvyvB6mA4M8&libraries=places&callback=initAutocomplete"
-     async defer></script>
-  <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-     $("#cercavicino").click(function(){
-      if (navigator.geolocation){
-        var position=navigator.geolocation.getCurrentPosition(function(position){
-        var lat = position.coords.latitude;
-        var long= position.coords.longitude;
-        $.ajax({
-          url: '/cercaservizi',
-          type: 'POST',
-          data:{
-          latitude: lat,
-          longitude: long
-          },
-          success: function(response) {
-          $("#servizivicini").html(response)
-         }
+	cerca1.addListener('place_changed', function() {
+	  var places1 = cerca1.getPlace();
+	});
+	cerca2.addListener('place_changed', function() {
+	  var places2 = cerca2.getPlace();
+	});
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQIh8MGEehUptz2u7vr8JbRvyvB6mA4M8&libraries=places&callback=initAutocomplete"
+	async defer></script>
+      <script src="http://code.jquery.com/jquery-1.6.4.min.js" type="text/javascript"></script>
+      <script type="text/javascript">
+      $(document).ready(function(){
+	$("#cercavicino").click(function(){
+	  if (navigator.geolocation){
+	    var position=navigator.geolocation.getCurrentPosition(function(position){
+	    var lat = position.coords.latitude;
+	    var long= position.coords.longitude;
+	    $.ajax({
+	      url: '/cercaservizi',
+	      type: 'POST',
+	      data:{
+	      latitude: lat,
+	      longitude: long
+	      },
+	      success: function(response) {
+	      $("#servizivicini").html(response)
+	    }
+	  });
+	});
+	}
+	});
       });
-    });
-    }
-    });
-  });
-</script>
+    </script>
+</body>
   <% else %>
 
 
