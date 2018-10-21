@@ -1,6 +1,6 @@
 
 require_relative '../rails_helper'
-describe "Sign_in", type: :feature do
+describe "Sign in", type: :feature do
   scenario "as no logged user and valid field" do
     visit('http://allaroundyou.com:3000/')
     click_link('registrati')

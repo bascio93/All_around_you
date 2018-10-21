@@ -1,6 +1,6 @@
 
 require_relative '../rails_helper'
-describe "Login", type: :feature do
+describe "Log_in", type: :feature do
   scenario "as no logged user" do
     visit('http://allaroundyou.com:3000/')
     userr=User.create(:name => "Giggetto o paninaro", :email => "g1gg10@omega.it", :password => "paninigratis1234*")
