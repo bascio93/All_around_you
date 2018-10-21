@@ -1,35 +1,82 @@
 
-<% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-</div>
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<div class="col-md-8">
-    <% if @user.servizis.any? %>
-      <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
-      <ol class="servizi">
-        <%= render @user.servizis %>
-      </ol>
-      <%= will_paginate @servizi %>
-    <% end %>
-  </div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<head>
 
+  <style>
+     @import url('https://fonts.googleapis.com/css?family=Merriweather');
+          h1{
+          font-family: 'Merriweather', serif;
+	    color:#B22222;
+          } 
+          
+           #div01 {
+	    font-family: 'Merriweather', serif;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid white;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    color:white;
+	    padding: 10px 10px;
+	    border-radius: 10px 10px 10px 10px;
+          } 
+          
+          a:link {
+	    font-family: 'Merriweather', serif;
+	    color: white;
+          }
+  
+  </style>
+
+</head>
+
+
+
+
+
+<body bgcolor='black'>
+
+      <% provide(:title, @user.name) %>
+      <div class="row">
+	<aside class="col-md-4">
+	  <section class="user_info">
+	    <h1>
+	      <%= gravatar_for @user %>
+	      <%= @user.name %>
+	    </h1>
+	  </section>
+	</aside>
+      </div>
+      <p id="notice"><%= notice %></p>
+      
+      <div id='div01'>
+      
+	    <p>
+	      <strong>Name:</strong> 
+	      <%= @user.name %>
+	    </p>
+
+	    <p>
+	      <strong>Email:</strong>
+	      <%= @user.email %>
+	    </p>
+      
+      </div>
+      
+      <br><br> 
+      
+      <div class="col-md-8">
+	  <% if @user.servizis.any? %>
+	    <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
+	    <ol class="servizi">
+	      <%= render @user.servizis %>
+	    </ol>
+	    <%= will_paginate @servizi %>
+	  <% end %>
+	</div>
+
+     <%= link_to 'Edit', edit_user_path(@user) %>   ><%= link_to 'Back', users_path %>
+
+</body>

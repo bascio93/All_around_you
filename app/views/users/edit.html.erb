@@ -1,28 +1,77 @@
-<% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+<head>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+  <style>
+  
+    @import url('https://fonts.googleapis.com/css?family=Merriweather');
+    
+    
+	    h1{
+		    color:#B22222;
+		    font-family: 'Merriweather', serif;
+		  }
+	    #div1{
+	    font-family: 'Merriweather', serif;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid white;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+	    border-radius: 10px 10px 10px 10px;
+          }
+          #a1{
+          font-family: 'Merriweather', serif;
+          color: white;
+          }
+          #change{
+	    color:white;
+          }
+          
+         
+	 
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+  </style>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+</head>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
+<body bgcolor='black'>
 
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target=_blank>change</a>
+    <% provide(:title, "Edit user") %>
+    <h1>Update your profile</h1>
+
+    <div class="col">
+      <div class="col-md-6 col-md-offset-3">
+	<%= form_for(@user) do |f| %>
+	  
+	  <div id='div1' >
+	  
+	    <a id='a1'><%= f.label :name %></a>
+	    <%= f.text_field :name, class: 'form-control' %>
+	    <br><br>
+	    <a id='a1'><%= f.label :email %></a>
+	    <%= f.email_field :email, class: 'form-control' %>
+	    <br><br>
+	    <a id='a1'><%= f.label :password %></a>
+	    <%= f.password_field :password, class: 'form-control' %>
+	    <br><br>
+	    <a id='a1'><%= f.label :password_confirmation, "Confirmation" %></a>
+	    <%= f.password_field :password_confirmation, class: 'form-control' %>
+	    <br><br>
+	    <%= f.submit  "Save changes", class: "btn btn-primary"%>
+	  
+	  </div>
+	  
+	<% end %>
+
+	<div class="gravatar_edit">
+	  <%= gravatar_for @user %>
+	  <a id='change' href="http://gravatar.com/emails" target=_blank>change</a>
+	</div>
+      </div>
     </div>
-  </div>
-</div>
+    
+    
+</body>

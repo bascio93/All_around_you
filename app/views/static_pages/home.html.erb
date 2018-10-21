@@ -205,47 +205,18 @@
             color: grey;
           }
 
-          #par3{
+         
+           #par3{
+
+            background-color:white;
+            width:360px;
+            height:80px;
+            margin:0 auto;
+            margin-top:50px;
+            font-family:arial;color:white;
             text-align:center;
-          }
-          
-          #registrati{
-	    font-family: 'Merriweather', serif;
-            background: white;
-	    border: none;       /* nessun bordo */
-	    color: red;        /* colore del testo    */
-	    font-weight: bold;  /* testo in grassetto  */
-	    font-size: 25px;
-	    padding: 0;         /* padding             */
-	    height: 90px;       /* altezza             */
-	    width: 290px;        /* larghezza           */
-	    border-radius: 10px 10px 10px 10px;
-          }
-          
-          #loggati{
-	    font-family: 'Merriweather', serif;
-            background: white;
-	    border: none;       /* nessun bordo */
-	    color: red;        /* colore del testo    */
-	    font-weight: bold;  /* testo in grassetto  */
-	    font-size: 25px;
-	    padding: 0;         /* padding             */
-	    height: 90px;       /* altezza             */
-	    width: 290px;        /* larghezza           */
-	    border-radius: 10px 10px 10px 10px;
-          }
-          
-          #oauth{
-	    font-family: 'Merriweather', serif;
-            background: white;
-	    border: none;       /* nessun bordo */
-	    color: red;        /* colore del testo    */
-	    font-weight: bold;  /* testo in grassetto  */
-	    font-size: 25px;
-	    padding: 0;         /* padding             */
-	    height: 90px;       /* altezza             */
-	    width: 290px;        /* larghezza           */
-	    border-radius: 10px 10px 10px 10px;
+            border: white 1px solid;
+
           }
 
         </style>
@@ -268,17 +239,19 @@
 	      </center>
 	    </div>
 
-	    <br><br><br>
-	    
-	    <div id='par3'>
-	    
-	    <%= button_to "Registrati!", signup_path, id: 'registrati' %>
 	    <br>
-	    <%= button_to "Loggati!", login_path, id: 'loggati' %>
-	    <br>
-	    <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %>
 	    
-	    </div>
+	     <div id = "par3">
+      <p> <h2><%= link_to "Registrati!", signup_path, id: 'registrati' %></p></h2>
+    </div>
+
+    <div id = "par3">
+	<p><h2><%= link_to "Loggati!", login_path, id: 'loggati' %></h2></p>
+    </div>
+    <div id ="par3">
+	 <p><h2><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %></h2></p>
+    </div>
+    </p>
     
     </p>
     </body>
