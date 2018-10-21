@@ -205,7 +205,8 @@
             color: grey;
           }
 
-          #par3{
+         
+           #par3{
 
             background-color:white;
             width:360px;
@@ -232,22 +233,26 @@
         </center>
         <p>
 
-    <div id="par2">
-      <center>
-        Con All Around You puoi trovare facilmente i servizi più vicini a te!
-      </center>
-    </div>
+	    <div id="par2">
+	      <center>
+		Con All Around You puoi trovare facilmente i servizi più vicini a te!
+	      </center>
+	    </div>
 
-    <div id = "par3">
+	    <br>
+	    
+	     <div id = "par3">
       <p> <h2><%= link_to "Registrati!", signup_path, id: 'registrati' %></p></h2>
     </div>
 
     <div id = "par3">
-    <p><h2><%= link_to "Loggati!", login_path, id: 'loggati' %></h2></p>
+	<p><h2><%= link_to "Loggati!", login_path, id: 'loggati' %></h2></p>
     </div>
     <div id ="par3">
-    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %>
+	 <p><h2><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %></h2></p>
     </div>
+    </p>
+    
     </p>
     </body>
    <% end %>
