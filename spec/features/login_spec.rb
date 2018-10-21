@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Login", type: :feature do
   scenario "as no logged user" do

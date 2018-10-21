@@ -356,7 +356,7 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 0.0.10)
   bootstrap_form (~> 2.7)
   byebug
-  capybara (~> 2.13)
+  capybara
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   composite_primary_keys

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Visit Homepage", type: :feature do
   scenario "as no logged user" do

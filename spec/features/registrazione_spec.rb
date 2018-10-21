@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 
 describe "Sign_in", type: :feature do
@@ -13,13 +14,13 @@ describe "Sign_in", type: :feature do
     userr = User.find_by_email(user_email)
     expect(userr).to be_valid
     userr.should_not be_nil
-    expect((User.find(userr.id)).to eq(userr)
+    expect(User.find(userr.id)).to eq(userr)
     expect(User.first.activation_token).to eq(false)
     parse1=userr.mail.split("@").first
     parse2=userr.mail.split("@").second
     visit "http://allaroundyou.com:3000/account_activations/"+user.id+"/edit?activation_token="+user.activation_token+"&email="+parse1+"%40"+parse2
     expect(User.first.activation_token).to eq(true)
-    expect(page).to have_current_path(user(userr)
+    expect(page).to have_current_path(user(userr))
     end
     scenario "as no logged user and no confermation " do
        visit('http://allaroundyou.com:3000/')
