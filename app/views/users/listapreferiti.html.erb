@@ -1,7 +1,28 @@
-<% provide(:title, 'Lista preferiti') %>
-<h1> Lista preferiti: </h1>
-<ul class="preferiti">
-  <% @favorite.each do |s| %>
-      <%= render s %>
-  <% end %>
-</ul>
+<head>
+
+  <style>
+  
+      @import url('https://fonts.googleapis.com/css?family=Merriweather');
+          h1{
+	    color:#B22222;
+	    font-family: 'Merriweather', serif; 
+          }
+          
+  </style>
+
+</head>
+
+ 
+<body bgcolor = 'black'>
+
+    <% provide(:title, 'Lista preferiti') %>
+    <h1> Lista preferiti: </h1>
+     
+	<ul class="preferiti">
+	  <% @favorite.each do |s| %>
+	      <%= render s %>
+	  <% end %>
+	</ul>
+    
+
+</body>
