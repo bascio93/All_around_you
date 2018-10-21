@@ -1,17 +1,20 @@
-require 'rails_helper'
 
+require_relative '../rails_helper'
 describe "Login", type: :feature do
   scenario "as no logged user" do
     visit('http://allaroundyou.com:3000/')
-    click_link('loggati')
-    userr=User.create(:name => "Matteo", :email => "allr0undy0u@gmail.com", :password => "avalidpassword1234*")
-    parse1=userr.mail.split("@").first
-    parse2=userr.mail.split("@").second
-    visit "http://allaroundyou.com:3000/account_activations/"+userr.id+"/edit?activation_token="+userr.activation_token+"&email="+parse1+"%40"+parse2
-    log_out
+    userr=User.create(:name => "Giggetto o paninaro", :email => "g1gg10@omega.it", :password => "paninigratis1234*")
+    catch1=userr.email.split("@").first
+    catch2=userr.email.split("@").second
+    visit "http://allaroundyou.com:3000/account_activations/"+userr.id.to_s+"/edit?activation_token="+userr.activation_token+"&email="+catch1+"%40"+catch2
+    userrr=User.find(userr.id)
+    expect(userrr.activated).to eq(true)
+    expect(page).to have_current_path(user_path(userr))
+    visit esci_path
     visit login_path
-    fill_in('email', userr.email)
-    fill_in('password', "avalidpassword1234*")
-    expect(page).to have_current_path(user(userr))
+    fill_in('email', with: "g1gg10@omega.it")
+    fill_in('password', with: "paninigratis1234*")
+    click_button('Log in')
+    expect(page).to have_current_path(user_path(userr))
     end
 end

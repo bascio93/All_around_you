@@ -8,8 +8,8 @@
           h1{
           font-family: 'Merriweather', serif;
 	    color:#B22222;
-          } 
-          
+          }
+
            #div01 {
 	    font-family: 'Merriweather', serif;
 	    width: 500px;
@@ -21,13 +21,13 @@
 	    color:white;
 	    padding: 10px 10px;
 	    border-radius: 10px 10px 10px 10px;
-          } 
-          
+          }
+
           a:link {
 	    font-family: 'Merriweather', serif;
 	    color: white;
           }
-  
+
   </style>
 
 </head>
@@ -50,11 +50,11 @@
 	</aside>
       </div>
       <p id="notice"><%= notice %></p>
-      
+
       <div id='div01'>
-      
+
 	    <p>
-	      <strong>Name:</strong> 
+	      <strong>Name:</strong>
 	      <%= @user.name %>
 	    </p>
 
@@ -62,11 +62,11 @@
 	      <strong>Email:</strong>
 	      <%= @user.email %>
 	    </p>
-      
+
       </div>
-      
-      <br><br> 
-      
+
+      <br><br>
+
       <div class="col-md-8">
 	  <% if @user.servizis.any? %>
 	    <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
@@ -77,6 +77,7 @@
 	  <% end %>
 	</div>
 
-     <%= link_to 'Edit', edit_user_path(@user) %>   ><%= link_to 'Back', users_path %>
+     <%= link_to 'Edit', edit_user_path(@user) %>
+     <%= link_to 'Logout', esci_path %>
 
 </body>
