@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root                'static_pages#home'
   get    'help'    => 'static_pages#help'
+  get     'esci'  => 'sessions#esci', as: 'esci'
   post    'cercaservizi' =>'ricerches#servizivicini'
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
   resources :recensionis,       only: [:create, :destroy]
   resources :domandes,          only: [:create, :destroy, :edit, :update]
   resources :ricerches,          only: [:create, :destroy]
-  resource :session, only: [:create, :destroy]
+  resource :session, only: [:create]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

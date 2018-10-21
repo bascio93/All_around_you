@@ -1,6 +1,7 @@
 class Servizi < ApplicationRecord
   geocoded_by :indirizzo
   belongs_to :user
+  after_validation :geocode, if: :indirizzo_changed?
   before_save :creacoordinate
   has_many :favorites, dependent: :destroy
   has_many :recensionis, dependent: :destroy

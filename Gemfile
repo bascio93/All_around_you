@@ -22,6 +22,7 @@ gem 'fog',                     '~> 1.23.0'
 gem 'net-ssh'
 gem 'devise'
 gem 'omniauth'
+gem 'redis'
 gem 'geocoder'
 gem 'omniauth-google-oauth2'
 gem 'composite_primary_keys'
@@ -64,7 +65,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
- 
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

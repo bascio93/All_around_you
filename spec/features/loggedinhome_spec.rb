@@ -13,7 +13,7 @@ describe "Sign_in", type: :feature do
     userr = User.find_by_email(user_email)
     expect(userr).to be_valid
     userr.should_not be_nil
-    expect((User.find(userr.id)).to eq(userr)
+    expect(User.find(userr.id).to eq(userr)
     expect(User.first.activation_token).to eq(false)
     parse1=userr.mail.split("@").first
     parse2=userr.mail.split("@").second
