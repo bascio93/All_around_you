@@ -13,9 +13,26 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the home\s?page$/
+      '/'
+
+    when /^the sign up page$/
+      '/users/sign_up'
+
+    when /^my profile page$/
+      '/welcome/profile'
+
     when /^the login page$/
       '/users/sign_in'
 
+    when /^my insertions page$/
+      '/properties'
+
+    when /^the last insertion page$/
+      property_path(Property.last)
+
+    when /^conversations page$/
+      '/conversations'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -6,11 +6,11 @@ Feature: User can login to the system
 Scenario: Login success
   Given I am a registered user
   And I am on the login page
-  When I fill in "Email" with "basciani.93@gmail.com"
+  When I fill in "Email" with "dabbraccio.francesco@gmail.com"
   And I fill in "Password" with "123456"
   And I press "Login"
   Then I should be on the home page
-  And I should see "logout"
+  And I should see "Esci"
 
 Scenario: Login failure
   Given I am on the login page
