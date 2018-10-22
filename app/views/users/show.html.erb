@@ -5,7 +5,7 @@
 
   <style>
      @import url('https://fonts.googleapis.com/css?family=Merriweather');
-          h1{
+          h1,h3{
           font-family: 'Merriweather', serif;
 	    color:#B22222;
           }
@@ -14,18 +14,23 @@
 	    font-family: 'Merriweather', serif;
 	    width: 500px;
 	    margin: left;
-	    border: 2px solid white;
+	    border: 2px solid black;
 	    position: relative;
 	    overflow: auto;
 	    text-align: left;
-	    color:white;
+	    color:black;
 	    padding: 10px 10px;
 	    border-radius: 10px 10px 10px 10px;
           }
-
+	  
+	  #div02{
+	    font-family: 'Merriweather', serif;
+	    color:black;
+	  }
+	  
           a:link {
 	    font-family: 'Merriweather', serif;
-	    color: white;
+	    color: black;
           }
 
   </style>
@@ -36,7 +41,7 @@
 
 
 
-<body bgcolor='black'>
+<body bgcolor='#A9A9A9'>
 
       <% provide(:title, @user.name) %>
       <div class="row">
@@ -71,7 +76,9 @@
 	  <% if @user.servizis.any? %>
 	    <h3>Numero Servizi: (<%= @user.servizis.count %>)</h3>
 	    <ol class="servizi">
-	      <%= render @user.servizis %>
+	      <div id='div02'>
+	      <li><%= render @user.servizis %></li>
+	      </div>
 	    </ol>
 	    <%= will_paginate @servizi %>
 	  <% end %>
@@ -82,3 +89,18 @@
      <%= link_to 'Logout', esci_path %>
 
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

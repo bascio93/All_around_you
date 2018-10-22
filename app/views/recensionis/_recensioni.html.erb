@@ -1,14 +1,32 @@
-<li id="Recensioni-<%= recensioni.id %>">
-  <span class="nome"><%= recensioni.titolo %></span>
-  <span class="nome"><%= link_to recensioni.servizi.nome, recensioni.servizi%></span>
-  <span class="nome"><%= link_to recensioni.user.name, recensioni.user%></span>
 
-  <span class="content"><%= recensioni.content %></span>
-  <span class="voto"><%= recensioni.votoservizio %></span>
-  <span class="timestamp">
-    <% if currentuser==recensioni.user %>
-      <%= link_to "Cancella", recensioni, :method => :delete,
-                                       data: { confirm: "Sicuro?" } %>
-    <% end %>
-  </span>
-</li>
+<head>
+  <style>
+    #div1{ 
+    font-family: 'Merriweather', serif; 
+    }
+  </style>
+</head>
+
+
+<body>
+  <div id='div1'>
+    <li id="Recensioni-<%= recensioni.id %>">
+      <b><span class="nome"><%= recensioni.titolo %></span></b>
+      <br>
+      <span class="content"><%= recensioni.content %></span>
+      <br>
+      <span class="voto"><%= recensioni.votoservizio %></span>
+      <br>
+      <span class="nome"><%= link_to recensioni.servizi.nome, recensioni.servizi%></span>
+      <span class="nome"><%= link_to recensioni.user.name, recensioni.user%></span>
+
+      
+      <span class="timestamp">
+	<% if currentuser==recensioni.user %>
+	  <%= link_to "Cancella", recensioni, :method => :delete,
+					  data: { confirm: "Sicuro?" } %>
+	<% end %>
+      </span>
+    </li>
+  <div>  
+</body>
