@@ -1,5 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-
+# note: require 'devise' after require 'rspec/rails'
 require 'devise'
 require_relative 'spec_helper'
 
