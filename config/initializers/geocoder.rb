@@ -1,6 +1,6 @@
 Geocoder.configure(
   # Geocoding options
-   timeout: 10,                 # geocoding service timeout (secs)
+   timeout: 9,                 # geocoding service timeout (secs)
    lookup: :yandex,            # name of geocoding service (symbol)
    ip_lookup: :maxmind,      # name of IP address geocoding service (symbol)
    language: :en,              # ISO-639 language code
