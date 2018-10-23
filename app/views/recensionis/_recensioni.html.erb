@@ -1,8 +1,8 @@
 
 <head>
   <style>
-    #div1{ 
-    font-family: 'Merriweather', serif; 
+    #div1{
+    font-family: 'Merriweather', serif;
     }
   </style>
 </head>
@@ -12,15 +12,15 @@
   <div id='div1'>
     <li id="Recensioni-<%= recensioni.id %>">
       <b><span class="nome"><%= recensioni.titolo %></span></b>
-      <br>
+      <br><br>
       <span class="content"><%= recensioni.content %></span>
-      <br>
+      <br><br>
       <span class="voto"><%= recensioni.votoservizio %></span>
-      <br>
+      <br><br>
       <span class="nome"><%= link_to recensioni.servizi.nome, recensioni.servizi%></span>
       <span class="nome"><%= link_to recensioni.user.name, recensioni.user%></span>
 
-      
+
       <span class="timestamp">
 	<% if currentuser==recensioni.user %>
 	  <%= link_to "Cancella", recensioni, :method => :delete,
@@ -28,5 +28,5 @@
 	<% end %>
       </span>
     </li>
-  <div>  
+  <div>
 </body>

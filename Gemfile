@@ -31,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'cucumber', '~> 3.1', '>= 3.1.2'
 gem 'bootstrap-will_paginate', '~> 0.0.10'
+gem 'cancan', '~> 1.6', '>= 1.6.10'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
