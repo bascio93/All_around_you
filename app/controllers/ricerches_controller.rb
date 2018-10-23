@@ -1,6 +1,6 @@
 class RicerchesController < ApplicationController
     skip_before_action :verify_authenticity_token , only: :servizivicini
-    # non cancellare i commenti sotto, servono per dopo
+    # testare
     def create
         testoindirizzo=params[:ricerche][:testoindirizzo]
         testonome=params[:ricerche][:testonome]
@@ -35,10 +35,10 @@ class RicerchesController < ApplicationController
     def servizivicini
         lat=params[:latitude]
         long=params[:longitude]
-        @servizi=Servizi.near([lat, long], 5, units: :km)
+        @servizi=Servizi.near([lat, long], 10, units: :km)
     end
     private
     def ricerche_params
      params.require(:ricerche).permit(:testonome, :testotipo,:testoindirizzo)
-  end
+    end
 end
