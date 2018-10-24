@@ -32,15 +32,15 @@
   </div>
   <style>
   @import url('https://fonts.googleapis.com/css?family=Merriweather');
-   
+
     h1{
 	color:#B22222;
-	font-family: 'Merriweather', serif; 
+	font-family: 'Merriweather', serif;
     }
     #Servizi{
-    font-family: 'Merriweather', serif;  
+    font-family: 'Merriweather', serif;
     }
-    
+
     #div_form{
         font-family: 'Merriweather', serif;
 	    color: black;
@@ -53,8 +53,8 @@
 	    padding: 10px 10px;
 	    border-radius: 10px 10px 10px 10px;
     }
-    
-    
+
+
   </style>
 
 </head>
@@ -81,7 +81,7 @@
 	<% end %>
       </span>
       <span class="aggiungi">
-     
+
       </span>
       <div class="row-md-8" align="left">
 	<% if @servizi.recensionis.any? %>
@@ -92,27 +92,27 @@
 	  <%= will_paginate @recensionis %>
 	<% end %>
       </div>
-      
+
       <br>
       <div id='div_form'>
-	  
+
 	  <section class="recensioni_form">
 	  <%= form_for(@recensioni) do |f| %>
 	  <%= f.label :titolo %>
-	  <%= f.text_field :titolo, class: 'form-control' %>
+	  <%= f.text_field :titolo, id: 'titolo', class: 'form-control' %>
 	  <br>
 	  <br>
 	  <%= f.label :Voto %>
-	  <%= f.text_field :votoservizio, class: 'form-control' %>
+	  <%= f.text_field :votoservizio, id: 'votoserv', class: 'form-control' %>
 	  <br>
 	  <br>
 	  <%=f.hidden_field 'servizi_id', :value => @servizi.id %>
 	  <div class="field">
-	    <%= f.text_area :content, placeholder: "Scrivi recensione" %>
+	    <%= f.text_area :content, id: 'recensionecontent', placeholder: "Scrivi recensione" %>
 	  </div>
-	  <%= f.submit "Post", class: "btn btn-primary" %>
+	  <%= f.submit "Invia Recensione", class: "btn btn-primary" %>
 	  <% end %>
-      
+
       </div>
 
 	  </section>
@@ -125,21 +125,21 @@
 	  <%= will_paginate @domandes %>
 	<% end %>
       </div>
-      
+
       <br>
-      
+
       <div id='div_form'>
-      
+
 	    <section class="domande_form">
 	    <%= form_for(@domande) do |f| %>
 	    <%=f.hidden_field 'servizio_id', :value => @servizi.id %>
 	    <div class="field">
-	      <%= f.text_area :content, placeholder: "Scrivi domanda" %>
+	      <%= f.text_area :content, id: 'domandacontent', placeholder: "Scrivi domanda" %>
 	    </div>
-	    <%= f.submit "Post", class: "btn btn-primary" %>
+	    <%= f.submit "Invia Domanda", class: "btn btn-primary" %>
 	    <% end %>
 	    </section>
-      
+
       </div>
 
     </div>

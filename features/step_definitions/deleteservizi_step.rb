@@ -14,9 +14,9 @@ Given ("i am on my favorite services list and i want to delete a service with id
     visit root_url
     click_link("Mostra preferiti")
 end
-When("i click cancella") do 
+When("i click cancella") do
     expect(page).to have_current_path(preferiti_path)
-    click_link('Cancella')
+    click_link('cancella')
     visit root_path
 end
 Then('i shouldnt see the service with id {int} into the favorite list') do |int|

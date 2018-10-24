@@ -7,7 +7,7 @@
   </span
   <span class="timestamp">
     <% if currentuser==favorite.user %>
-      <%= link_to "Cancella", id: 'Cancella', cancellapreferiti_path(favorite.id)%>
+      <%= link_to "cancella", cancellapreferiti_path(favorite.id), id: 'cancella', class: 'cancella'%>
     <% end %>
   </span>
 </li>
