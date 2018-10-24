@@ -1,37 +1,99 @@
-<li id="Domande-<%= @domanda.id %>">
-  <span class="nome"><%= link_to @domanda.user.name, @domanda.user%></span>
-  <span class="nome"><%= link_to @domanda.servizi.nome, @domanda.servizi %></span>
-  <span class="content"><%= @domanda.content %></span>
-  <span class="timestamp">
-    <% if currentuser==@domanda.user %>
-      <%= link_to "Cancella", cancelladomande_path(@domanda)%>
-    <% end %>
-  </span>
-    <br>
-      <%= button_to "Mi piace", vote_up_question_path(@domanda) %>
-      <br>
-      <%= button_to "Non mi piace", vote_down_question_path(@domanda) %>
-      <h3>Numero Voti: (<%= @domanda.vote_count %>)</h3>
-      <br>
-      <p> Mi piace: (<%= @domanda.likecount %>) </p>
-      <br>
-      <p> Non mi piace: (<%= @domanda.nolikecount %>) </p>
-      <br>
-  <div class="row-md-8" align="left">
-    <% if @domanda.rispostes.any? %>
-      <h3>Numero Risposte: (<%= @domanda.rispostes.count %>)</h3>
-      <ol class="Risposte">
-         <%= render @rispostes %>
-      </ol>
-    <% end %>
-  </div>
-  <div class=row-md-8" align="left">
-    <%= form_for (@risposte) do |f| %>
-      <%=f.hidden_field 'domanda_id', :value => @domanda.id %>
-      <div class="field">
-         <%= f.text_area :content, id: 'rispostacontent', placeholder: "Scrivi risposta" %>
-     </div>
-      <%= f.submit "Manda Risposta", class: "btn btn-primary" %>
-  </div>
-  <% end %>
-</li>
+
+
+<head>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Merriweather');
+    #like{
+     font-family: 'Merriweather', serif;
+     
+    }
+    #domanda{
+    font-family: 'Merriweather', serif;
+     font-family: 'Merriweather', serif;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid black;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+	    border-radius: 10px 10px 10px 10px;
+    }
+    
+    #like{
+       font-family: 'Merriweather', serif;
+       display:inline;
+    }
+    #rispostacontent1{
+      font-family: 'Merriweather', serif;
+    }
+    
+    
+  </style>
+
+</head>
+
+
+<body bgcolor="#A9A9A9">
+      <br><br>
+      <div id='domanda'>
+      
+      <ul id="Domande-<%= @domanda.id %>">
+        <b>Domanda: </b><span class="content"><%= @domanda.content %></span>
+        <br>
+	<b>Posta da: </b><span class="nome"><%= link_to @domanda.user.name, @domanda.user%></span>
+	<br>
+	<b>Servizio: </b><span class="nome"><%= link_to @domanda.servizi.nome, @domanda.servizi %></span>
+	<br>
+	<span class="timestamp">
+	</ul>
+	
+	
+	<% if currentuser==@domanda.user %>
+	<center><%= link_to "Cancella", cancelladomande_path(@domanda)%></center>
+	<% end %>
+	</div>
+	
+	<br>
+	</span>
+	  <br>
+	  
+	  
+	  <div id='like'>
+	  
+	    <%= button_to "Mi piace", vote_up_question_path(@domanda) %>
+	    <%= button_to "Non mi piace", vote_down_question_path(@domanda) %>
+	    
+	  </div>
+	  
+	  <hr>
+	  
+	  <div id='rispostacontent1'>
+	    <h3>Numero Voti: (<%= @domanda.vote_count %>)</h3>
+	  
+	    <p> Mi piace: (<%= @domanda.likecount %>) </p>
+	  
+	    <p> Non mi piace: (<%= @domanda.nolikecount %>) </p>
+	  
+	<div class="row-md-8" align="left">
+	  <% if @domanda.rispostes.any? %>
+	    <h3>Numero Risposte: (<%= @domanda.rispostes.count %>)</h3>
+	    <ol class="Risposte">
+	      <%= render @rispostes %>
+	    </ol>
+	  <% end %>
+	</div>
+	<div class=row-md-8" align="left">
+	  <%= form_for (@risposte) do |f| %>
+	    <%=f.hidden_field 'domanda_id', :value => @domanda.id %>
+	    <div class="field">
+	      <%= f.text_area :content, id: 'rispostacontent', placeholder: "Scrivi risposta" %>
+	  </div>
+	    <%= f.submit "Manda Risposta", class: "btn btn-primary" %>
+	</div>
+	
+	</div>
+	<% end %>
+      
+</body>
