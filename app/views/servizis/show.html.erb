@@ -1,10 +1,5 @@
-<li id="Servizi-<%= @servizi.id %>">
-  <span class="nome"><%= @servizi.nome %></span>
-  <span class="tipo"><%= @servizi.tipo %></span>
-  <span class="content"><%= @servizi.descrizione %>
-  <span class="image"> <%= image_tag @servizi.immagini.url if @servizi.immagini? %> </span>
-  <span class="preferiti"> <%= link_to "Aggiungi ai preferiti", aggiungi_path(@servizi.id) %> </span>
 
+<<<<<<< HEAD
   </span>
   <span class="timestamp">
     Creato: <%= time_ago_in_words(@servizi.created_at) %> ago.
@@ -61,3 +56,122 @@
   <% end %>
   </section>
 </li>
+=======
+<head>
+
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Merriweather');
+   
+    h1{
+	color:#B22222;
+	font-family: 'Merriweather', serif; 
+    }
+    #Servizi{
+    font-family: 'Merriweather', serif;  
+    }
+    
+    #div_form{
+        font-family: 'Merriweather', serif;
+	    color: black;
+	    width: 500px;
+	    margin: left;
+	    border: 2px solid black;
+	    position: relative;
+	    overflow: auto;
+	    text-align: left;
+	    padding: 10px 10px;
+	    border-radius: 10px 10px 10px 10px;
+    }
+    
+    
+  </style>
+
+</head>
+
+<body bgcolor='#A9A9A9'>
+
+    <div id="Servizi  <%= @servizi.id %>">
+      <center><h1><span class="nome"><%= @servizi.nome %></span></h1></center>
+      <br><br>
+      <b>Tipo Servizio:</b> <span class="tipo"><%= @servizi.tipo %></span>
+      <br><br>
+      <b>Descrizione: </b> <span class="content"><%= @servizi.descrizione %>
+      <br><br>
+      <span class="image"> <%= image_tag @servizi.immagini.url if @servizi.immagini? %> </span>
+      <br><br>
+      <span class="preferiti"> <%= link_to "Aggiungi ai preferiti", aggiungi_path(@servizi.id) %> </span>
+
+      </span>
+      <span class="timestamp">
+	Creato: <%= time_ago_in_words(@servizi.created_at) %> ago.
+	<% if currentuser==@servizi.user %>
+	  <%= link_to "Cancella", @servizi, :method => :delete,
+					  data: { confirm: "Sicuro?" } %>
+	<% end %>
+      </span>
+      <span class="aggiungi">
+     
+      </span>
+      <div class="row-md-8" align="left">
+	<% if @servizi.recensionis.any? %>
+	  <h3>Numero Recensioni: (<%= @servizi.recensionis.count %>)</h3>
+	  <ol class="recensioni">
+	    <%= render @servizi.recensionis %>
+	  </ol>
+	  <%= will_paginate @recensionis %>
+	<% end %>
+      </div>
+      
+      <br>
+      <div id='div_form'>
+	  
+	  <section class="recensioni_form">
+	  <%= form_for(@recensioni) do |f| %>
+	  <%= f.label :titolo %>
+	  <%= f.text_field :titolo, class: 'form-control' %>
+	  <br>
+	  <br>
+	  <%= f.label :Voto %>
+	  <%= f.text_field :votoservizio, class: 'form-control' %>
+	  <br>
+	  <br>
+	  <%=f.hidden_field 'servizi_id', :value => @servizi.id %>
+	  <div class="field">
+	    <%= f.text_area :content, placeholder: "Scrivi recensione" %>
+	  </div>
+	  <%= f.submit "Post", class: "btn btn-primary" %>
+	  <% end %>
+      
+      </div>
+
+	  </section>
+      <div class="row-md-8" align="right">
+	<% if @servizi.domandes.any? %>
+	  <h3>Numero Domande: (<%= @servizi.domandes.count %>)</h3>
+	  <ol class="domande">
+	    <%= render @servizi.domandes %>
+	  </ol>
+	  <%= will_paginate @domandes %>
+	<% end %>
+      </div>
+      
+      <br>
+      
+      <div id='div_form'>
+      
+	    <section class="domande_form">
+	    <%= form_for(@domande) do |f| %>
+	    <%=f.hidden_field 'servizio_id', :value => @servizi.id %>
+	    <div class="field">
+	      <%= f.text_area :content, placeholder: "Scrivi domanda" %>
+	    </div>
+	    <%= f.submit "Post", class: "btn btn-primary" %>
+	    <% end %>
+	    </section>
+      
+      </div>
+
+    </div>
+
+</body>
+>>>>>>> 13625b4cdfe4728655ada5c3e0fd373933173bab

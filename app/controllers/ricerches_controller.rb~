@@ -1,6 +1,6 @@
 class RicerchesController < ApplicationController
     skip_before_action :verify_authenticity_token , only: :servizivicini
-    # testare
+    # non cancellare i commenti sotto, servono per dopo
     def create
         testoindirizzo=params[:ricerche][:testoindirizzo]
         testonome=params[:ricerche][:testonome]
@@ -40,5 +40,5 @@ class RicerchesController < ApplicationController
     private
     def ricerche_params
      params.require(:ricerche).permit(:testonome, :testotipo,:testoindirizzo)
-    end
+  end
 end

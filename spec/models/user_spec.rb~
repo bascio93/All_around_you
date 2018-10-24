@@ -1,0 +1,9 @@
+require_relative '../rails_helper'
+
+Rspec.describe User, :type => :model do
+
+  it "Validazione utente" do
+    user = User.new(:email => "utente4@omega.it", :name => "Matteob", :password => "avalidpassword1234*")
+    expect(user).to be_valid
+  end
+end
