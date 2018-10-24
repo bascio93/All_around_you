@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
         @favorite=Favorite.new
         @servizio=Servizi.find_by(id: params[:id])
         cuser=currentuser
-        if !((cuser.favorites.where("servizi_id=?", params[:id])).nil?)
+        if !((cuser.favorites.where("servizi_id=?", params[:id])).empty?)
             redirect_to @servizio
         else
           @favorite.servizi=@servizio

@@ -3,6 +3,9 @@ class RispostesController < ApplicationController
     before_action :userrisposta, only: [:destroy, :edit]
     #before_action :nouserdomanda, only: :create
     def create
+       session[:has_voted_r]=false
+       session[:like_r]=false
+       session[:dislike_r]=false
        @domanda=Domande.find_by(id: params[:risposte][:domanda_id])
        @risposta=Risposte.new
        @risposta.content=params[:risposte][:content]
@@ -28,67 +31,75 @@ class RispostesController < ApplicationController
     end
     def vote_up
         @risposta=Risposte.find(params[:id])
-         if !session[:has_voted_r].present?
-            @risposta.increment!(:vote_count)
-            @risposta.increment!(:likecount)
-            session[:has_voted_r]=true
-            session[:like_r]=true
-            redirect_to @risposta.domande
-            return true
-         end
          if !session[:has_voted_r] && !session[:dislike_r]
             @risposta.increment!(:vote_count)
             @risposta.increment!(:likecount)
             session[:has_voted_r]=true
             session[:like_r]=true
-         elsif !session[:has_voted_r] && session[:dislike_r]
-            @risposta.increment!(:vote_count)
-            @risposta.increment!(:likecount)
-            session[:has_voted_r]=true
-            session[:like_r]=true
-        elsif session[:has_voted_r] && session[:dislike_r]
+            redirect_to @risposta.domande
+            return true
+        end
+        if !session[:has_voted_r] && session[:dislike_r]
             @risposta.increment!(:likecount)
             @risposta.decrement!(:nolikecount)
+            session[:has_voted_r]=true
             session[:like_r]=true
-            session[:has_voted_r]=false
-        else
+            redirect_to @risposta.domande
+            return true
+        end
+        if session[:has_voted_r] && !session[:dislike_r]
             @risposta.decrement!(:vote_count)
             @risposta.decrement!(:likecount)
             session[:like_r]=false
             session[:has_voted_r]=false
+            redirect_to @risposta.domande
+            return true
+        end
+        if  session[:has_voted_r] && session[:dislike_r]
+            @risposta.increment!(:likecount)
+            @risposta.decrement!(:nolikecount)
+            session[:like_r]=true
+            session[:has_voted_r]=true
+            session[:dislike_r]=false
+            redirect_to @risposta.domande
+            return true
         end
         redirect_to @risposta.domande
     end
     def vote_down
         @risposta=Risposte.find(params[:id])
-         if !session[:has_voted_r].present?
+         if !session[:has_voted_r] && !session[:like_r]
             @risposta.increment!(:vote_count)
             @risposta.increment!(:nolikecount)
             session[:has_voted_r]=true
             session[:dislike_r]=true
             redirect_to @risposta.domande
             return true
-         end
-         if !session[:has_voted_r] && !session[:like_r]
-            @risposta.increment!(:vote_count)
-            @risposta.increment!(:nolikecount)
-            session[:has_voted_r]=true
-            session[:dislike_r]=true
-         elsif !session[:has_voted_r] && session[:like_r]
-            @risposta.increment!(:vote_count)
+        end
+        if !session[:has_voted_r] && session[:like_r]
             @risposta.increment!(:likecount)
+            @risposta.decrement!(:nolikecount)
             session[:has_voted_r]=true
             session[:dislike_r]=true
-        elsif session[:has_voted_r] && session[:like_r]
-            @risposta.increment!(:nolikecount)
-            @risposta.decrement!(:likecount)
-            session[:dislike_r]=true
-            session[:has_voted_r]=false
-        else
+            redirect_to @risposta.domande
+            return true
+        end
+        if session[:has_voted_r] && !session[:like_r]
             @risposta.decrement!(:vote_count)
             @risposta.decrement!(:nolikecount)
             session[:dislike_r]=false
             session[:has_voted_r]=false
+            redirect_to @risposta.domande
+            return true
+        end
+        if  session[:has_voted_r] && session[:like_r]
+            @risposta.increment!(:nolikecount)
+            @risposta.decrement!(:likecount)
+            session[:dislike_r]=true
+            session[:has_voted_r]=true
+            session[:like_r]=false
+            redirect_to @risposta.domande
+            return true
         end
         redirect_to @risposta.domande
     end

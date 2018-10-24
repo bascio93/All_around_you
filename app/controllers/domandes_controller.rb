@@ -2,6 +2,9 @@ class DomandesController < ApplicationController
     before_action :logged_in_users,   only: [:create, :destroy]
     before_action :userdomanda, only: [:destroy, :edit]
     def create
+       session[:has_voted]=false
+       session[:like]=false
+       session[:dislike]=false
        @servizio=Servizi.find_by(id: params[:domande][:servizio_id])
        @domande=Domande.new
        @domande.content=params[:domande][:content]
@@ -20,9 +23,11 @@ class DomandesController < ApplicationController
     end
     def destroy
        domanda=Domande.find(params[:id])
+       redirect_to root_url if domanda.nil?
+       @servizio=domanda.servizi
        domanda.destroy
        flash[:success] = "Domanda eliminata"
-       redirect_to request.referrer || root_url
+       redirect_to @servizio
     end
     #get domandes/:id
     def edit
@@ -45,41 +50,75 @@ class DomandesController < ApplicationController
     end
     def vote_up
         @domanda=Domande.find(params[:id])
-         if !session[:has_voted].present?
+         if !session[:has_voted] && !session[:dislike]
             @domanda.increment!(:vote_count)
             @domanda.increment!(:likecount)
             session[:has_voted]=true
+            session[:like]=true
             redirect_to @domanda
             return true
-         end
-         if !session[:has_voted]
-            @domanda.increment!(:vote_count)
+        end
+        if !session[:has_voted] && session[:dislike]
             @domanda.increment!(:likecount)
+            @domanda.decrement!(:nolikecount)
             session[:has_voted]=true
-         else
+            session[:like]=true
+            redirect_to @domanda
+            return true
+        end
+        if session[:has_voted] && !session[:dislike]
             @domanda.decrement!(:vote_count)
             @domanda.decrement!(:likecount)
+            session[:like]=false
             session[:has_voted]=false
+            redirect_to @domanda
+            return true
+        end
+        if  session[:has_voted] && session[:dislike]
+            @domanda.increment!(:likecount)
+            @domanda.decrement!(:nolikecount)
+            session[:like]=true
+            session[:has_voted]=true
+            session[:dislike]=false
+            redirect_to @domanda
+            return true
         end
         redirect_to @domanda
     end
     def vote_down
         @domanda=Domande.find(params[:id])
-        if  !session[:has_voted].present?
+         if !session[:has_voted] && !session[:like]
             @domanda.increment!(:vote_count)
             @domanda.increment!(:nolikecount)
             session[:has_voted]=true
+            session[:dislike]=true
             redirect_to @domanda
             return true
         end
-         if !session[:has_voted]
-            @domanda.increment!(:vote_count)
-            @domanda.increment!(:nolikecount)
+        if !session[:has_voted] && session[:like]
+            @domanda.increment!(:likecount)
+            @domanda.decrement!(:nolikecount)
             session[:has_voted]=true
-         else
+            session[:dislike]=true
+            redirect_to @domanda
+            return true
+        end
+        if session[:has_voted] && !session[:like]
             @domanda.decrement!(:vote_count)
             @domanda.decrement!(:nolikecount)
+            session[:dislike]=false
             session[:has_voted]=false
+            redirect_to @domanda
+            return true
+        end
+        if  session[:has_voted] && session[:like]
+            @domanda.increment!(:nolikecount)
+            @domanda.decrement!(:likecount)
+            session[:dislike]=true
+            session[:has_voted]=true
+            session[:like]=false
+            redirect_to @domanda
+            return true
         end
         redirect_to @domanda
     end
