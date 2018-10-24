@@ -4,5 +4,10 @@
   </span>
   <span class="timestamp">
     Creato: <%= time_ago_in_words(favorite.servizi.created_at) %> ago.
+  </span
+  <span class="timestamp">
+    <% if currentuser==favorite.user %>
+      <%= link_to "Cancella", id:'Cancella', cancellapreferiti_path(favorite)%>
+    <% end %>
   </span>
 </li>

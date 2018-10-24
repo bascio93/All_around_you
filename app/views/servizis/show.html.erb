@@ -9,8 +9,7 @@
   <span class="timestamp">
     Creato: <%= time_ago_in_words(@servizi.created_at) %> ago.
     <% if currentuser==@servizi.user %>
-      <%= link_to "Cancella", @servizi, :method => :delete,
-                                       data: { confirm: "Sicuro?" } %>
+      <%= link_to "Cancella", cancellaservizi_path(@servizi) %>
     <% end %>
   </span>
   <span class="aggiungi">
@@ -28,18 +27,18 @@
   <section class="recensioni_form">
   <%= form_for(@recensioni) do |f| %>
   <%= f.label :titolo %>
-  <%= f.text_field :titolo, class: 'form-control' %>
+  <%= f.text_field :titolo, id: 'titolo', class: 'form-control' %>
   <br>
   <br>
   <%= f.label :Voto %>
-  <%= f.text_field :votoservizio, class: 'form-control' %>
+  <%= f.text_field :votoservizio, id: 'votoserv', class: 'form-control' %>
   <br>
   <br>
   <%=f.hidden_field 'servizi_id', :value => @servizi.id %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Scrivi recensione" %>
+    <%= f.text_area :content, id:'recensionecontent', placeholder: "Scrivi recensione" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Invia Recensione", id:'post1', class: "btn btn-primary" %>
   <% end %>
 
       </section>
@@ -56,9 +55,9 @@
   <%= form_for(@domande) do |f| %>
   <%=f.hidden_field 'servizio_id', :value => @servizi.id %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Scrivi domanda" %>
+    <%= f.text_area :content, id: 'domandacontent', placeholder: "Scrivi domanda" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Invia Domanda", class: "btn btn-primary" %>
   <% end %>
   </section>
 </li>

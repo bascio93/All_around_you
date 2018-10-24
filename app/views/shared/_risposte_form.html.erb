@@ -1,0 +1,9 @@
+<section class="risposte_form">
+  <%= form_for(@risposte) do |f| %>
+  <%=f.hidden_field 'domanda_id', :value => domande.id %>
+  <div class="field">
+    <%= f.text_area :content, id: 'rispostecontent', placeholder: "Scrivi risposta" %>
+  </div>
+  <%= f.submit "Invia Risposta", class: "btn btn-primary" %>
+  <% end %>
+  </section>

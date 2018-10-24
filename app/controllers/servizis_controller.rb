@@ -14,7 +14,7 @@ class ServizisController < ApplicationController
   def destroy
     Servizi.find(params[:id]).destroy
     flash[:success] = "Cancellazione avvenuta con successo"
-    render 'show'
+    redirect_to root_url
   end
   def show
       @servizi=Servizi.find(params[:id])
@@ -22,6 +22,7 @@ class ServizisController < ApplicationController
       @recensionis=@servizi.recensionis.paginate(page: params[:page])
       @domande=Domande.new
       @domandes=@servizi.domandes.paginate(page: params[:page])
+      @risposte=Risposte.new
   end
   private
     #Strong parameters (Parametri forti), nel controller possibile soltanto accedere alle chiavi whitelistate descrizione, tipo, indirizzo e nome

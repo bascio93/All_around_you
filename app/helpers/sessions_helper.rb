@@ -17,9 +17,6 @@ module SessionsHelper
   def logged_in?
     !currentuser.nil?
   end
-   def islogged
-      !current_user.nil?
-   end
    def reindirizza(default)
        redirect_to(session[:urlchiesto] || default)
        session.delete(:urlchiesto)

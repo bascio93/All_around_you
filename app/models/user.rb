@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :recensionis, dependent: :destroy
   has_many :domandes, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :rispostes, dependent: :destroy
   attr_accessor :remember_token, :reset_token
   before_save { self.email = email.downcase }
   before_create { create_activation_digest }

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_users, only: [:edit, :index, :update, :destroy]
   before_action :userincorretto, only: [:edit, :update]
-  before_action :seiadmin, only: :destroy
+  before_action :seiadmin, only: :rendiadmin
   # GET /users
   # GET /users.json
   def index
@@ -29,13 +29,16 @@ class UsersController < ApplicationController
     end
   end
   def seiadmin
-    redirect_to(root_url) unless currentuser.admin?
+    return currentuser.admin?
   end
   # GET /users/1/edit
   def edit
     @user=User.find(params[:id])
   end
-
+  def rendiadmin
+    @user=User.find_by(id: params[:id])
+    @user.admin=true
+  end
   # POST /users
   # POST /users.json
     def create
@@ -66,9 +69,15 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    u=User.find(params[:id])
+    if currentuser==u || seiadmin
+        u.destroy
+        flash[:success] = "User deleted"
+        redirect_to users_url
+    else
+        flash[:danger] ="Non puoi cancellare un utente se non sei admin"
+        redirect_to root_url
+    end
   end
 
   private

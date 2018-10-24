@@ -1,8 +1,8 @@
 Geocoder.configure(
   # Geocoding options
-   timeout: 8,                 # geocoding service timeout (secs)
-   lookup: :google,            # name of geocoding service (symbol)
-   ip_lookup: :freegeoip,      # name of IP address geocoding service (symbol)
+   timeout: 10,                 # geocoding service timeout (secs)
+   lookup: :yandex,            # name of geocoding service (symbol)
+   ip_lookup: :maxmind,      # name of IP address geocoding service (symbol) :freegeoip,
    language: :en,              # ISO-639 language code
    use_https: false,           # use HTTPS for lookup requests? (if supported)
    http_proxy: nil,            # HTTP proxy server (user:pass@host:port)

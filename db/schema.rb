@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018184201) do
+ActiveRecord::Schema.define(version: 20181024100948) do
 
   create_table "domandes", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 20181018184201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "servizi_id"
+    t.integer "vote_count", default: 0
+    t.integer "likecount", default: 0
+    t.integer "nolikecount", default: 0
     t.index ["servizi_id"], name: "index_domandes_on_servizi_id"
     t.index ["user_id"], name: "index_domandes_on_user_id"
   end
@@ -28,6 +31,7 @@ ActiveRecord::Schema.define(version: 20181018184201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["servizi_id"], name: "index_favorites_on_servizi_id"
+    t.index ["user_id", "servizi_id"], name: "index_favorites_on_user_id_and_servizi_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
@@ -49,6 +53,19 @@ ActiveRecord::Schema.define(version: 20181018184201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "testoindirizzo"
+  end
+
+  create_table "rispostes", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.integer "domande_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "vote_count", default: 0
+    t.integer "likecount", default: 0
+    t.integer "nolikecount", default: 0
+    t.index ["domande_id"], name: "index_rispostes_on_domande_id"
+    t.index ["user_id"], name: "index_rispostes_on_user_id"
   end
 
   create_table "servizi", force: :cascade do |t|

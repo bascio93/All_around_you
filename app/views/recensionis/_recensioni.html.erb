@@ -7,8 +7,7 @@
   <span class="voto"><%= recensioni.votoservizio %></span>
   <span class="timestamp">
     <% if currentuser==recensioni.user %>
-      <%= link_to "Cancella", recensioni, :method => :delete,
-                                       data: { confirm: "Sicuro?" } %>
+      <%= link_to "Cancella", cancellarecensioni_path(recensioni)%>
     <% end %>
   </span>
 </li>

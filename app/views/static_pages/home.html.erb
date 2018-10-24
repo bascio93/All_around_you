@@ -50,17 +50,17 @@
 	    padding: 10px 10px;
 	    border-radius: 10px 10px 10px 10px;
           }
-          
+
           #bd{
 	    color: white;
           }
-          
+
           a:link, a:visited {
 	    text-decoration: underline;
 	    color: #00BFFF;
 	    background-color: transparent;
 	  }
-	  
+
 	  #cercavicino{
 	    background: white;
 	    border: none;       /* nessun bordo */
@@ -126,7 +126,7 @@
 	    <button id="cercavicino"> Cerca vicino a te </button>
 	</section>
 	<br>
-	
+
 	<div id="servizivicini">
 	Servizi vicini:
 	</div>
@@ -205,7 +205,7 @@
             color: grey;
           }
 
-         
+
            #par3{
 
             background-color:white;
@@ -240,7 +240,7 @@
 	    </div>
 
 	    <br>
-	    
+
 	     <div id = "par3">
       <p> <h2><%= link_to "Registrati!", signup_path, id: 'registrati' %></p></h2>
     </div>
@@ -251,8 +251,6 @@
     <div id ="par3">
 	 <p><h2><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, id:'oauth' %></h2></p>
     </div>
-    </p>
-    
     </p>
     </body>
    <% end %>

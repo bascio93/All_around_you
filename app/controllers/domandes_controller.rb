@@ -3,13 +3,13 @@ class DomandesController < ApplicationController
     before_action :userdomanda, only: [:destroy, :edit]
     def create
        @servizio=Servizi.find_by(id: params[:domande][:servizio_id])
-       redirect_to signup_path if @servizio.id.nil?
        @domande=Domande.new
        @domande.content=params[:domande][:content]
        @domande.servizi=@servizio
-       redirect_to signup_path if @domande.servizi.id.nil?
        @domande.user=currentuser
-       redirect_to login_path if @domande.user.id.nil?
+       @domande.vote_count=0
+       @domande.likecount=0
+       @domande.nolikecount=0
        if @domande.save
           flash[:success]= "Domanda inserita con successo"
           redirect_to @servizio
@@ -19,7 +19,8 @@ class DomandesController < ApplicationController
        end
     end
     def destroy
-       domande.destroy
+       domanda=Domande.find(params[:id])
+       domanda.destroy
        flash[:success] = "Domanda eliminata"
        redirect_to request.referrer || root_url
     end
@@ -29,13 +30,58 @@ class DomandesController < ApplicationController
     end
     #patch domandes/:id
     def update
-       @domanda=Domanda.find(params[:id])
+       @domanda=Domande.find(params[:id])
        if @domanda.update_attributes(domande_params)
         flash[:success]="Domanda modificata"
         redirect_to @domanda.servizi
        else
         render 'edit'
       end
+    end
+    def show
+        @domanda=Domande.find(params[:id])
+        @risposte=Risposte.new
+        @rispostes=@domanda.rispostes
+    end
+    def vote_up
+        @domanda=Domande.find(params[:id])
+         if !session[:has_voted].present?
+            @domanda.increment!(:vote_count)
+            @domanda.increment!(:likecount)
+            session[:has_voted]=true
+            redirect_to @domanda
+            return true
+         end
+         if !session[:has_voted]
+            @domanda.increment!(:vote_count)
+            @domanda.increment!(:likecount)
+            session[:has_voted]=true
+         else
+            @domanda.decrement!(:vote_count)
+            @domanda.decrement!(:likecount)
+            session[:has_voted]=false
+        end
+        redirect_to @domanda
+    end
+    def vote_down
+        @domanda=Domande.find(params[:id])
+        if  !session[:has_voted].present?
+            @domanda.increment!(:vote_count)
+            @domanda.increment!(:nolikecount)
+            session[:has_voted]=true
+            redirect_to @domanda
+            return true
+        end
+         if !session[:has_voted]
+            @domanda.increment!(:vote_count)
+            @domanda.increment!(:nolikecount)
+            session[:has_voted]=true
+         else
+            @domanda.decrement!(:vote_count)
+            @domanda.decrement!(:nolikecount)
+            session[:has_voted]=false
+        end
+        redirect_to @domanda
     end
     private
     def domande_params

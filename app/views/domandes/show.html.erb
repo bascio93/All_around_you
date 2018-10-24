@@ -1,0 +1,37 @@
+<li id="Domande-<%= @domanda.id %>">
+  <span class="nome"><%= link_to @domanda.user.name, @domanda.user%></span>
+  <span class="nome"><%= link_to @domanda.servizi.nome, @domanda.servizi %></span>
+  <span class="content"><%= @domanda.content %></span>
+  <span class="timestamp">
+    <% if currentuser==@domanda.user %>
+      <%= link_to "Cancella", cancelladomande_path(@domanda.id)%>
+    <% end %>
+  </span>
+    <br>
+      <%= button_to "Mi piace", vote_up_question_path(@domanda) %>
+      <br>
+      <%= button_to "Non mi piace", vote_down_question_path(@domanda) %>
+      <h3>Numero Voti: (<%= @domanda.vote_count %>)</h3>
+      <br>
+      <p> Mi piace: (<%= @domanda.likecount %>) </p>
+      <br>
+      <p> Non mi piace: (<%= @domanda.nolikecount %>) </p>
+      <br>
+  <div class="row-md-8" align="left">
+    <% if @domanda.rispostes.any? %>
+      <h3>Numero Risposte: (<%= @domanda.rispostes.count %>)</h3>
+      <ol class="Risposte">
+         <%= render @rispostes %>
+      </ol>
+    <% end %>
+  </div>
+  <div class=row-md-8" align="right">
+    <%= form_for (@risposte) do |f| %>
+      <%=f.hidden_field 'domanda_id', :value => @domanda.id %>
+      <div class="field">
+         <%= f.text_area :content, id: 'rispostacontent', placeholder: "Scrivi risposta" %>
+     </div>
+      <%= f.submit "Manda Risposta", class: "btn btn-primary" %>
+  </div>
+  <% end %>
+</li>

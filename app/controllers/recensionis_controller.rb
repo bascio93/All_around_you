@@ -15,7 +15,8 @@ class RecensionisController < ApplicationController
          end
      end
     def destroy
-        recensioni.destroy
+        recensione=Recensioni.find(params[:id])
+        recensione.destroy
         flash[:success] = "Recensione eliminata"
         redirect_to request.referrer || root_url
     end

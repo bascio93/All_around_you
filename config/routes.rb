@@ -10,13 +10,24 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   get    'servizis/:id/Aggpref'  => 'favorites#create', as: 'aggiungi'
+  get    'favorites/:id/cancella' => 'favorites#destroy', as: 'cancellapreferiti'
   get    '/preferiti'          => 'users#listapreferiti', as: 'preferiti'
-  resources :users
+  get    '/domande/:id/cancella' => 'domandes#destroy', as: 'cancelladomande'
+  get    '/risposte/:id/cancella' => 'rispostes#destroy', as: 'cancellarisposte'
+  get    '/recensioni/:id/cancella' => 'recensionis#destroy', as: 'cancellarecensioni'
+  get    '/servizi/:id/cancella'    => 'servizis#destroy', as: 'cancellaservizi'
+  get    '/users/:id/cancella'      =>  'users#destroy', as: 'cancellautente'
+  post    '/domanda/:id/vote_up'     => 'domandes#vote_up', as: 'vote_up_question'
+  post    '/domanda/:id/vote_down'     => 'domandes#vote_down', as: 'vote_down_question'
+  post    '/risposta/:id/vote_up'     => 'rispostes#vote_up', as: 'vote_up_answer'
+  post    '/risposta/:id/vote_down'     => 'rispostes#vote_down', as: 'vote_down_answer'
+  resources :users,                only: [:edit, :index, :update, :show, :new, :create]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :servizis,          only: [:create, :destroy, :show]
-  resources :recensionis,       only: [:create, :destroy]
-  resources :domandes,          only: [:create, :destroy, :edit, :update]
+  resources :servizis,          only: [:create, :show]
+  resources :recensionis,       only: [:create]
+  resources :domandes,          only: [:create, :edit, :update, :show]
+  resources :rispostes,          only: [:create, :edit, :update, :show]
   resources :ricerches,          only: [:create, :destroy]
   resource :session, only: [:create]
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }

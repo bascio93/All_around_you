@@ -35,7 +35,7 @@ class RicerchesController < ApplicationController
     def servizivicini
         lat=params[:latitude]
         long=params[:longitude]
-        @servizi=Servizi.near([lat, long], 20, units: :km)
+        @servizi=Servizi.near([lat, long], 70, units: :km)
     end
     private
     def ricerche_params

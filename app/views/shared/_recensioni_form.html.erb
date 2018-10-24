@@ -1,15 +1,15 @@
 <%= form_for(@recensioni) do |f| %>
   <%= f.label :titolo %>
-  <%= f.text_field :titolo, class: 'form-control' %>
+  <%= f.text_field :titolo, id: 'titolo' class: 'form-control' %>
   <br>
   <br>
   <%= f.label :Voto %>
-  <%= f.text_field :votoservizio, class: 'form-control' %>
+  <%= f.text_field :votoservizio, id: 'votoservizio', class: 'form-control' %>
   <br>
   <br>
   <%= f.hidden_field :servizio, value: @recensioni.servizi_id %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Scrivi recensione" %>
+    <%= f.text_area :content, id: 'content', placeholder: "Scrivi recensione" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Post", id: 'post2' class: "btn btn-primary" %>
 <% end %>
