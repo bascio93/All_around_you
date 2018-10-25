@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :users,                only: [:edit, :index, :update, :show, :new, :create]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :servizis,          only: [:create, :show]
+  resources :servizis,          only: [:create, :show, :index]
   resources :recensionis,       only: [:create]
   resources :domandes,          only: [:create, :edit, :update, :show]
   resources :rispostes,          only: [:create, :edit, :update, :show]

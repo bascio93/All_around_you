@@ -23,6 +23,21 @@ class ServizisController < ApplicationController
       @domande=Domande.new
       @domandes=@servizi.domandes.paginate(page: params[:page])
       @risposte=Risposte.new
+      @hash = Gmaps4rails.build_markers(@servizi) do |servizio, marker|
+     marker.lat servizio.latitude
+     marker.lng servizio.longitude
+     str="Creatore: " + "#{servizio.user.name}" +"\n" + "Nome: " + "#{servizio.nome}" + "\n" + "Tipo: " + "#{servizio.tipo}" + "\n" + "Descrizione: " + "#{servizio.descrizione}" +"\n" + "Indirizzo: " + "#{servizio.indirizzo}"
+     marker.infowindow str
+     end
+  end
+  def index
+    @servizi=Servizi.all
+    @hash = Gmaps4rails.build_markers(@servizi) do |servizio, marker|
+     marker.lat servizio.latitude
+     marker.lng servizio.longitude
+     str="Creatore: " + "#{servizio.user.name}" +"\n" + "Nome: " + "#{servizio.nome}" + "\n" + "Tipo: " + "#{servizio.tipo}" + "\n" + "Descrizione: " + "#{servizio.descrizione}" +"\n" + "Indirizzo: " + "#{servizio.indirizzo}"
+     marker.infowindow str
+     end
   end
   private
     #Strong parameters (Parametri forti), nel controller possibile soltanto accedere alle chiavi whitelistate descrizione, tipo, indirizzo e nome
