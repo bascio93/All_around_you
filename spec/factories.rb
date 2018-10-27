@@ -1,19 +1,18 @@
 FactoryGirl.define do
   factory :user do
     id                    "1"
-    username              "GianniBiondi"
-    email                 "mario@live.it"
-    password              "password"
-    password_confirmation "password"
+    name                  "Giggi"
+    email                 "Gigg10@live.it"
+    password              "avalidpassword1234*"
     admin                 "true"
   end
 
-  factory :property do
-    title "Casa bella grande"
-    description "È una casa molto spaziosa"
+  factory :servizi do
+    id                    "1"
+    nome             "bar bello"
+    tipo                 "bar"
+    descrizione "bar aperitivi serali"
     user_id "1"
-    city "Rome, Italy"
-    price "125"
-    categories [""]
+    indirizzo "Via Tuscolana"
   end
 end

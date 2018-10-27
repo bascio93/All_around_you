@@ -15,7 +15,7 @@ class RicerchesController < ApplicationController
         #risposta2=JSON.parse(http_call, {:symbolize_names => true})
         if !testoindirizzo==""
             indparsato=testoindirizzo.split(',').first
-            serviziperindirizzo=Servizi.near(indparsato, 50, units: :km )
+            serviziperindirizzo=Servizi.near(indparsato, 5, units: :km )
             services=serviziperindirizzo
         else
             services=Servizi.all
@@ -35,7 +35,7 @@ class RicerchesController < ApplicationController
     def servizivicini
         lat=params[:latitude]
         long=params[:longitude]
-        @servizi=Servizi.near([lat, long], 10, units: :km)
+        @servizi=Servizi.near([lat, long], 5, units: :km)
     end
     private
     def ricerche_params

@@ -2,7 +2,7 @@
   <span class="nome"><%= link_to risposte.user.name, user_path(risposte.user)%></span>
   <span class="nome"><%= link_to risposte.domande.servizi.nome, servizi_path(risposte.domande.servizi)%></span>
   <span class="content"><%= risposte.content %></span>
-  <span class="modifica"><%= link_to 'Modifica', edit_risposte_path %></span>
+
    <span class="mipiace"> Mi piace: (<%= risposte.likecount %>) </span>
    <span class="nonmipiace"> Non mi piace: (<%= risposte.nolikecount %>) </span>
    <span class="mipiacebutton"><%= button_to "Mi piace", vote_up_answer_path(risposte) %></span>
